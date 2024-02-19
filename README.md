@@ -1,1 +1,1 @@
-[https://nhentai.com](BEDOL_SCRIPTS)
+[BEDOL SCRIPT](https://nhentai.com)
