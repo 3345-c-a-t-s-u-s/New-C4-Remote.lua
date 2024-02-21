@@ -48,8 +48,8 @@ function Signal(Table,Target:{{Name:string,Func:FunctionalTest}})
 
 	for i,v in ipairs(Target) do
 		Table[v.Name] = function(...)
-	
-			
+
+
 			return v['Func'](...)
 		end 
 	end 
@@ -121,7 +121,7 @@ end
 
 local function GetImageData(name:string,image:ImageLabel)
 	name = name or "ADS"
-	
+
 	if name:find('rbxassetid://') or name:find('http://www.roblox.com/asset/?id=') or name:find('http://www.roblox.com/') then
 		image.Image = name
 		image.ImageRectOffset = Vector2.new(0,0)
@@ -129,17 +129,17 @@ local function GetImageData(name:string,image:ImageLabel)
 		image.ImageColor3 = Color3.fromRGB(255,255,255)
 		return
 	end
-	
+
 	name = name:lower()
 	local NigImage = "rbxassetid://3926305904"
 	image.Position = UDim2.new(0.1,0,0.45,0)
-	
+
 	if Biohazard.ColorOnIcon then
 		image.ImageColor3 = Biohazard.MainColor
 	else
 		image.ImageColor3 = Color3.fromRGB(255,255,255)
 	end
-	
+
 	if name == "ads" then
 		image.Image = NigImage
 		image.ImageRectOffset = Vector2.new(205,565)
@@ -178,10 +178,14 @@ local function GetImageData(name:string,image:ImageLabel)
 
 	if name == "setting" then
 		image.Image = "rbxassetid://3515393063"
+		image.ImageRectOffset = Vector2.new(0, 0)
+		image.ImageRectSize = Vector2.new(0,0)
 	end
 
 	if name == "user" then
 		image.Image = "rbxassetid://10494577250"
+		image.ImageRectOffset = Vector2.new(0, 0)
+		image.ImageRectSize = Vector2.new(0,0)
 	end
 end
 
@@ -192,7 +196,9 @@ function Biohazard.new(UITitle:string,IconId:string)
 		TabInfo = {},
 		DropdownSize = 5,
 	}
-
+	
+	WindowSelf.ToggleCallback = function() end
+	
 	local function scrolling_connect(scrollframe:ScrollingFrame)
 		return coroutine.wrap(function()
 			local addres = WindowSelf.DropdownSize * 31
@@ -255,12 +261,16 @@ function Biohazard.new(UITitle:string,IconId:string)
 		if Val then
 			TweenService:Create(Frame,TweenInfo.new(0.1),{Size = UDim2.new(0.1, 350,0.1, 250),Position = UDim2.new(0.5,0,0.5,0)}):Play()
 		else
-			TweenService:Create(Frame,TweenInfo.new(0.1),{Size = UDim2.new(0,0,0,0),Position = UDim2.new(0.5,0,0.6,0)}):Play()
+			TweenService:Create(Frame,TweenInfo.new(0.1),{Size = UDim2.new(0.1, 250,0,0)}):Play()
+		end
+		
+		if WindowSelf.ToggleCallback then
+			pcall(WindowSelf.ToggleCallback,Val)
 		end
 	end
 
 	Frame:GetPropertyChangedSignal('Size'):Connect(function()
-		if Frame.Size == UDim2.new(0,0,0,0) then
+		if Frame.Size == UDim2.new(0,0,0,0) or Frame.Size.Y.Scale <= 0 then
 			Frame.Visible = false
 		else
 			Frame.Visible = true
@@ -728,7 +738,7 @@ function Biohazard.new(UITitle:string,IconId:string)
 
 			Label.Name = "Label"
 			Label.Parent = Tabscroll
-			Label.BackgroundColor3 = Color3.fromRGB(35, 39, 42)
+			Label.BackgroundColor3 = Color3.fromRGB(44, 47, 51)
 			Label.BorderColor3 = Color3.fromRGB(0, 0, 0)
 			Label.BorderSizePixel = 0
 			Label.Size = UDim2.new(0.980000019, 0, 0.5, 0)
@@ -755,21 +765,21 @@ function Biohazard.new(UITitle:string,IconId:string)
 			Text.TextWrapped = true
 			Text.TextXAlignment = Enum.TextXAlignment.Left
 			Text.Text = TextString
-			
+
 			if TextEnum then
 				if typeof(TextEnum) == 'EnumItem' then
 					Text.TextXAlignment = Enum.TextXAlignment.TextEnum
 				else
 					TextEnum = TextEnum:lower()
-					
+
 					if TextEnum:find('left') then
 						Text.TextXAlignment = Enum.TextXAlignment.Left
 					end
-					
+
 					if TextEnum:find('right') then
 						Text.TextXAlignment = Enum.TextXAlignment.Right
 					end
-					
+
 					if TextEnum:find('center') then
 						Text.TextXAlignment = Enum.TextXAlignment.Center
 					end
@@ -1329,13 +1339,14 @@ function Biohazard.new(UITitle:string,IconId:string)
 				Button.BorderColor3 = Color3.fromRGB(0, 0, 0)
 				Button.BorderSizePixel = 0
 				Button.Size = UDim2.new(1, 0, 0.5, 0)
-				Button.ZIndex = 27
+				Button.ZIndex = 6000
 				Button.Font = Enum.Font.Code
 				Button.TextColor3 = Color3.fromRGB(255, 255, 255)
 				Button.TextScaled = true
 				Button.TextSize = 14.000
 				Button.TextWrapped = true
-
+				Button.Active = true
+				
 				if Biohazard.ColorOnIcon then
 					Button.TextColor3 = Biohazard.MainColor
 				end
@@ -1416,7 +1427,11 @@ function Biohazard.new(UITitle:string,IconId:string)
 		end
 		return TabSelf
 	end
-
+	
+	function WindowSelf:ScreenGUI()
+		return Biohazard
+	end
+	
 	local dragToggle = nil
 	local dragSpeed = 0.1
 	local dragStart = nil
@@ -1456,7 +1471,9 @@ function Biohazard.new(UITitle:string,IconId:string)
 			ToggleFunctions(WindowSelf.Gui)
 		end
 	end)
-
+	
+	
+	
 	return WindowSelf
 end
 
@@ -1608,7 +1625,7 @@ function Biohazard:Notification()
 	ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 	ScreenGui.IgnoreGuiInset = false
 	ScreenGui.ResetOnSpawn = false
-	
+
 	Notify.Name = "Notify"
 	Notify.Parent = ScreenGui
 	Notify.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -1621,7 +1638,7 @@ function Biohazard:Notification()
 	UIListLayout.Parent = Notify
 	UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 	UIListLayout.Padding = UDim.new(0, 3)
-	
+
 	return Signal({},{
 		{
 			Name = 'new',
@@ -1712,12 +1729,12 @@ function Biohazard:Notification()
 					}):Play()
 
 					task.wait(0.5)
-					
+
 					TweenService:Create(Notification,TweenInfo.new(0.4),{
 						BackgroundTransparency = 1,
 						Size = UDim2.new(0,0,-0.01,0)
 					}):Play()
-					
+
 					task.wait(0.4)
 					Notification:Destroy()
 				end)
