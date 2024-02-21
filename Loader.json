@@ -1,0 +1,48 @@
+--[[ BEDOL HUB SCRIPTS MAKE WITH LUA PYTHON C++ C C# ASSEMBLY RUBY JAVASCRIPT JSON PHP]]
+--[[
+WORLD AWAY
+]]
+
+local Id = game.GameId;
+
+if Id == 601130232 then
+    -- BEE SWARM SIM
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/3345-c-a-t-s-u-s/New-C4-Remote.lua/main/BeeSwarm.cpp'))
+    return
+end
+
+if Id == 4777817887 then
+    -- Blade_Ball
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/nqxlOfc/Loaders/main/Blade_Ball.lua"))()
+    return
+end
+
+if Id == 210851291 then
+    -- Build a Boat
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/3345-c-a-t-s-u-s/New-C4-Remote.lua/main/BuildABoat.py"))()
+    return
+end
+
+if Id == 2440500124 then
+    -- DOORS
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/3345-c-a-t-s-u-s/New-C4-Remote.lua/main/Doors.c"))()
+    return
+end
+
+if Id == 2408700413 then
+    -- NIGGA
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/3345-c-a-t-s-u-s/New-C4-Remote.lua/main/KaijuParadise.cs"))()
+    return
+end
+
+if Id == 3717264063 then
+    -- NICO NEXTBOT
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/3345-c-a-t-s-u-s/New-C4-Remote.lua/main/NicoNextbot.js"))()
+    return
+end
+
+if Id == 1000233041 or Id == '2481103512' then
+    -- SCP 3008
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/3345-c-a-t-s-u-s/New-C4-Remote.lua/main/SCP_3008.php"))()
+    return
+end
