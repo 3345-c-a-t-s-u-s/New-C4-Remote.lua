@@ -1,9 +1,40 @@
+--[[
+local BiohazardUI = loadstring(game:HttpGet('https://raw.githubusercontent.com/3345-c-a-t-s-u-s/New-C4-Remote.lua/main/Biohazard.s'))()
+local HubIcon = 'http://www.roblox.com/asset/?id=16456736411'
+local Noitify = BiohazardUI:Notification()
+
+BiohazardUI:Loader(HubIcon,'BIOHAZARD')
+
+local Window = BiohazardUI.new('BIOHAZARD',HubIcon)
+local ExampleTab = Window:Tab('Example Tab','earth')
+
+ExampleTab:AddLabel('/// Example \\\\\\','center')
+
+ExampleTab:AddButton('Button',function()
+	Noitify.new('Notification: '..tostring(math.random(5,10000)),1)
+	print('button')
+end)
+
+ExampleTab:AddSlider('Slider',0,100,5,function(value)
+	print(value)
+end)
+
+ExampleTab:AddToggle('Toggle',false,function(value)
+	print(value)
+end)
+
+ExampleTab:AddDropdown('Dropdown',{1,2,3,4},2,function(value)
+	print(value)
+end)
+]]
+
 local UserInputService = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
 local RunService = game:GetService("RunService")
 local LocalPlayer = game:GetService("Players").LocalPlayer
 local Mouse = LocalPlayer:GetMouse()
 local CoreGui = game:FindFirstChild('CoreGui') or LocalPlayer.PlayerGui
+local TextService = game:GetService('TextService')
 local Biohazard = {
 	Icons = "https://raw.githubusercontent.com/evoincorp/lucideblox/master/src/modules/util/icons.json",
 	MainColor = Color3.fromRGB(255, 0, 4),
@@ -14,13 +45,15 @@ local Biohazard = {
 
 function Signal(Table,Target:{{Name:string,Func:FunctionalTest}})
 	Table = Table or {}
-	
+
 	for i,v in ipairs(Target) do
 		Table[v.Name] = function(...)
+	
+			
 			return v['Func'](...)
 		end 
 	end 
-	
+
 	return Table
 end
 
@@ -88,8 +121,25 @@ end
 
 local function GetImageData(name:string,image:ImageLabel)
 	name = name or "ADS"
+	
+	if name:find('rbxassetid://') or name:find('http://www.roblox.com/asset/?id=') or name:find('http://www.roblox.com/') then
+		image.Image = name
+		image.ImageRectOffset = Vector2.new(0,0)
+		image.ImageRectSize = Vector2.new(0,0)
+		image.ImageColor3 = Color3.fromRGB(255,255,255)
+		return
+	end
+	
 	name = name:lower()
 	local NigImage = "rbxassetid://3926305904"
+	image.Position = UDim2.new(0.1,0,0.45,0)
+	
+	if Biohazard.ColorOnIcon then
+		image.ImageColor3 = Biohazard.MainColor
+	else
+		image.ImageColor3 = Color3.fromRGB(255,255,255)
+	end
+	
 	if name == "ads" then
 		image.Image = NigImage
 		image.ImageRectOffset = Vector2.new(205,565)
@@ -142,7 +192,7 @@ function Biohazard.new(UITitle:string,IconId:string)
 		TabInfo = {},
 		DropdownSize = 5,
 	}
-	
+
 	local function scrolling_connect(scrollframe:ScrollingFrame)
 		return coroutine.wrap(function()
 			local addres = WindowSelf.DropdownSize * 31
@@ -155,7 +205,7 @@ function Biohazard.new(UITitle:string,IconId:string)
 			end)
 		end)()
 	end
-	
+
 	local BiohazardUI = Instance.new("ScreenGui")
 	local Frame = Instance.new("Frame")
 	local UICorner = Instance.new("UICorner")
@@ -180,7 +230,7 @@ function Biohazard.new(UITitle:string,IconId:string)
 	local Buttonsscroll = Instance.new("ScrollingFrame") scrolling_connect(Buttonsscroll)
 	local UIListLayout = Instance.new("UIListLayout")
 	local Tabs = Instance.new("Frame")
-	
+
 	task.spawn(function()
 		local UICorner = Instance.new("UICorner")
 		Tabs.Name = "Tabs"
@@ -194,12 +244,12 @@ function Biohazard.new(UITitle:string,IconId:string)
 		Tabs.ZIndex = 4
 		Tabs.BackgroundTransparency = 1
 		TweenService:Create(Tabs,TweenInfo.new(2),{BackgroundTransparency = 0}):Play()
-		
-		
+
+
 		UICorner.CornerRadius = UDim.new(0, 2)
 		UICorner.Parent = Tabs
 	end)
-	
+
 	local UICorner_7 = Instance.new("UICorner")
 	local ToggleFunctions = function(Val)
 		if Val then
@@ -208,7 +258,7 @@ function Biohazard.new(UITitle:string,IconId:string)
 			TweenService:Create(Frame,TweenInfo.new(0.1),{Size = UDim2.new(0,0,0,0),Position = UDim2.new(0.5,0,0.6,0)}):Play()
 		end
 	end
-	
+
 	Frame:GetPropertyChangedSignal('Size'):Connect(function()
 		if Frame.Size == UDim2.new(0,0,0,0) then
 			Frame.Visible = false
@@ -216,11 +266,11 @@ function Biohazard.new(UITitle:string,IconId:string)
 			Frame.Visible = true
 		end
 	end)
-	
+
 	BiohazardUI:GetPropertyChangedSignal('Enabled'):Connect(function()
 		BiohazardUI.Enabled = true
 	end)
-	
+
 	task.spawn(function()
 		task.wait(2)
 		if UserInputService.TouchEnabled then
@@ -325,13 +375,13 @@ function Biohazard.new(UITitle:string,IconId:string)
 			end)
 		end
 	end)
-	
+
 	BiohazardUI.Name = "Biohazard_"..tostring(math.random(1,1000))
 	BiohazardUI.Parent = CoreGui
 	BiohazardUI.ResetOnSpawn = false
 	BiohazardUI.IgnoreGuiInset = true
 	BiohazardUI.ResetOnSpawn = false
-	
+
 	Frame.Parent = BiohazardUI
 	Frame.Active = true
 	Frame.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -340,7 +390,7 @@ function Biohazard.new(UITitle:string,IconId:string)
 	Frame.BorderSizePixel = 0
 	Frame.Position = UDim2.new(0.5, 0, 0.5, 0)
 	Frame.Size = UDim2.new(0,0,0,0)
-	
+
 	TweenService:Create(Frame,TweenInfo.new(1,Enum.EasingStyle.Quint),{Size = Biohazard.Size}):Play()
 	UICorner.CornerRadius = UDim.new(0, 2)
 	UICorner.Parent = Frame
@@ -365,10 +415,10 @@ function Biohazard.new(UITitle:string,IconId:string)
 	DropShadow.ImageTransparency = 1
 	DropShadow.ScaleType = Enum.ScaleType.Slice
 	DropShadow.SliceCenter = Rect.new(49, 49, 450, 450)
-	
+
 	TweenService:Create(DropShadow,TweenInfo.new(2),{ImageTransparency = 0.5}):Play()
 
-	
+
 	HeadFrame.Name = "HeadFrame"
 	HeadFrame.Parent = Frame
 	HeadFrame.BackgroundColor3 = Color3.fromRGB(44, 47, 51)
@@ -379,8 +429,8 @@ function Biohazard.new(UITitle:string,IconId:string)
 	HeadFrame.BackgroundTransparency = 1
 	TweenService:Create(HeadFrame,TweenInfo.new(2),{BackgroundTransparency = 0}):Play()
 
-	
-	
+
+
 	UICorner_2.CornerRadius = UDim.new(0, 2)
 	UICorner_2.Parent = HeadFrame
 
@@ -402,9 +452,9 @@ function Biohazard.new(UITitle:string,IconId:string)
 	Title.TextWrapped = true
 	Title.TextXAlignment = Enum.TextXAlignment.Left
 	Title.TextTransparency = 1
-	
+
 	TweenService:Create(Title,TweenInfo.new(2),{TextTransparency = 0}):Play()
-	
+
 	Logo.Name = "Logo"
 	Logo.Parent = HeadFrame
 	Logo.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -418,9 +468,9 @@ function Biohazard.new(UITitle:string,IconId:string)
 	Logo.ZIndex = 5
 	Logo.Image = IconId or "rbxassetid://16435136751"
 	Logo.ImageTransparency = 1
-	
+
 	TweenService:Create(Logo,TweenInfo.new(2),{ImageTransparency = 0}):Play()
-	
+
 	Frame_2.Parent = Frame
 	Frame_2.AnchorPoint = Vector2.new(0.5, 0.5)
 	Frame_2.BackgroundColor3 = Biohazard.MainColor
@@ -429,10 +479,10 @@ function Biohazard.new(UITitle:string,IconId:string)
 	Frame_2.Position = UDim2.new(0.5, 0, 0.975000024, 0)
 	Frame_2.Size = UDim2.new(0.949999988, 0, 0.00300000003, 0)
 	Frame_2.ZIndex = 2
-	
+
 	Frame_2.BackgroundTransparency = 1
 	TweenService:Create(Frame_2,TweenInfo.new(3),{BackgroundTransparency = 0}):Play()
-	
+
 	Black.Name = "Black"
 	Black.Parent = Frame_2
 	Black.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -442,11 +492,11 @@ function Biohazard.new(UITitle:string,IconId:string)
 	Black.BorderSizePixel = 0
 	Black.Position = UDim2.new(0.5, 0, 0.5, 0)
 	Black.Size = UDim2.new(1, 3, 1, 3)
-	
-	Black.BackgroundTransparency = 1
-	TweenService:Create(Black,TweenInfo.new(3),{BackgroundTransparency = 0}):Play()
 
-	
+	Black.BackgroundTransparency = 1
+	TweenService:Create(Black,TweenInfo.new(3),{BackgroundTransparency = 0.95}):Play()
+
+
 	UICorner_3.CornerRadius = UDim.new(0, 2)
 	UICorner_3.Parent = Black
 
@@ -458,11 +508,11 @@ function Biohazard.new(UITitle:string,IconId:string)
 	Frame_3.Position = UDim2.new(0.284636676, 0, 0.534389138, 0)
 	Frame_3.Size = UDim2.new(0, 1, 0.884000003, 0)
 	Frame_3.ZIndex = 2
-	
+
 	Frame_3.BackgroundTransparency = 1
 	TweenService:Create(Frame_3,TweenInfo.new(3),{BackgroundTransparency = 0}):Play()
 
-	
+
 	Black_2.Name = "Black"
 	Black_2.Parent = Frame_3
 	Black_2.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -472,11 +522,11 @@ function Biohazard.new(UITitle:string,IconId:string)
 	Black_2.BorderSizePixel = 0
 	Black_2.Position = UDim2.new(0.5, 0, 0.5, 0)
 	Black_2.Size = UDim2.new(1, 8, 1, 8)
-	
-	Black_2.BackgroundTransparency = 1
-	TweenService:Create(Black_2,TweenInfo.new(2),{BackgroundTransparency = 0}):Play()
 
-	
+	Black_2.BackgroundTransparency = 1
+	TweenService:Create(Black_2,TweenInfo.new(2),{BackgroundTransparency = 0.95}):Play()
+
+
 	UICorner_4.CornerRadius = UDim.new(0, 2)
 	UICorner_4.Parent = Black_2
 
@@ -488,11 +538,11 @@ function Biohazard.new(UITitle:string,IconId:string)
 	Frame_4.Position = UDim2.new(0.497768253, 0, 0.09096466, 0)
 	Frame_4.Size = UDim2.new(0.949999988, 0, 0.00249999994, 0)
 	Frame_4.ZIndex = 2
-	
+
 	Frame_4.BackgroundTransparency = 1
 	TweenService:Create(Frame_4,TweenInfo.new(2),{BackgroundTransparency = 0}):Play()
 
-	
+
 	Black_3.Name = "Black"
 	Black_3.Parent = Frame_4
 	Black_3.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -504,9 +554,9 @@ function Biohazard.new(UITitle:string,IconId:string)
 	Black_3.Size = UDim2.new(1, 3, 1, 3)
 
 	Black_3.BackgroundTransparency = 1
-	TweenService:Create(Black_3,TweenInfo.new(2),{BackgroundTransparency = 0}):Play()
-	
-	
+	TweenService:Create(Black_3,TweenInfo.new(2),{BackgroundTransparency = 0.95}):Play()
+
+
 	UICorner_5.CornerRadius = UDim.new(0, 2)
 	UICorner_5.Parent = Black_3
 
@@ -520,9 +570,9 @@ function Biohazard.new(UITitle:string,IconId:string)
 	MainFrame.Position = UDim2.new(0.022317443, 0, 0.0974649191, 0)
 	MainFrame.Size = UDim2.new(0.950450897, 0, 0.871034861, 0)
 	MainFrame.ZIndex = 3
-	
 
-	
+
+
 	Buttons.Name = "Buttons"
 	Buttons.Parent = MainFrame
 	Buttons.AnchorPoint = Vector2.new(0, 0.5)
@@ -535,8 +585,8 @@ function Biohazard.new(UITitle:string,IconId:string)
 	Buttons.ZIndex = 4
 	Buttons.BackgroundTransparency = 1
 	TweenService:Create(Buttons,TweenInfo.new(2),{BackgroundTransparency = 0}):Play()
-	
-	
+
+
 	UICorner_6.CornerRadius = UDim.new(0, 2)
 	UICorner_6.Parent = Buttons
 
@@ -558,7 +608,7 @@ function Biohazard.new(UITitle:string,IconId:string)
 	UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
 	UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 	UIListLayout.Padding = UDim.new(0, 4)
-	
+
 	function WindowSelf:Tab(TabName:string,IconType:string)
 		local TabSelf = {}
 		local Tabscroll = Instance.new("ScrollingFrame")
@@ -582,7 +632,7 @@ function Biohazard.new(UITitle:string,IconId:string)
 		UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
 		UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 		UIListLayout.Padding = UDim.new(0, 4)
-		
+
 		local TabButton = Instance.new("Frame")
 		local UIAspectRatioConstraint = Instance.new("UIAspectRatioConstraint")
 		local UICorner = Instance.new("UICorner")
@@ -619,11 +669,11 @@ function Biohazard.new(UITitle:string,IconId:string)
 		Icon.ImageColor3 = Biohazard.MainColor
 		Icon.ImageRectOffset = Vector2.new(205, 565)
 		Icon.ImageRectSize = Vector2.new(35, 35)
-		
+
 		if IconType then
 			GetImageData(IconType,Icon)
 		end
-		
+
 		Title.Name = "Title"
 		Title.Parent = TabButton
 		Title.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -641,7 +691,7 @@ function Biohazard.new(UITitle:string,IconId:string)
 		Title.TextSize = 14.000
 		Title.TextWrapped = true
 		Title.TextXAlignment = Enum.TextXAlignment.Left
-		
+
 		local function TabValue(value)
 			if value then
 				Tabscroll.Visible = true
@@ -651,14 +701,14 @@ function Biohazard.new(UITitle:string,IconId:string)
 				Tabscroll.Visible = false
 			end
 		end
-		
+
 		TabValue(not WindowSelf.TabInfo[1])
-		
+
 		table.insert(WindowSelf.TabInfo,{
 			callback = TabValue,
 			Frame = Tabscroll
 		})
-		
+
 		cretate_button(TabButton).MouseButton1Click:Connect(function()
 			Create_Ripple(TabButton)
 			for i,v in ipairs(WindowSelf.TabInfo) do
@@ -669,8 +719,8 @@ function Biohazard.new(UITitle:string,IconId:string)
 				end
 			end
 		end)
-		
-		function TabSelf:AddLabel(TextString:string)
+
+		function TabSelf:AddLabel(TextString:string,TextEnum)
 			local Label = Instance.new("Frame")
 			local UIAspectRatioConstraint = Instance.new("UIAspectRatioConstraint")
 			local Text = Instance.new("TextLabel")
@@ -706,9 +756,28 @@ function Biohazard.new(UITitle:string,IconId:string)
 			Text.TextXAlignment = Enum.TextXAlignment.Left
 			Text.Text = TextString
 			
+			if TextEnum then
+				if typeof(TextEnum) == 'EnumItem' then
+					Text.TextXAlignment = Enum.TextXAlignment.TextEnum
+				else
+					TextEnum = TextEnum:lower()
+					
+					if TextEnum:find('left') then
+						Text.TextXAlignment = Enum.TextXAlignment.Left
+					end
+					
+					if TextEnum:find('right') then
+						Text.TextXAlignment = Enum.TextXAlignment.Right
+					end
+					
+					if TextEnum:find('center') then
+						Text.TextXAlignment = Enum.TextXAlignment.Center
+					end
+				end
+			end
 			UICorner.CornerRadius = UDim.new(0, 3)
 			UICorner.Parent = Label
-			
+
 			return Signal({},{
 				{
 					Name = 'Text',
@@ -718,11 +787,11 @@ function Biohazard.new(UITitle:string,IconId:string)
 				}
 			})
 		end
-		
+
 		function TabSelf:AddToggle(ToggleString:string,Default:boolean,callback)
-			
+
 			callback = callback or function() end
-			
+
 			local Toggle = Instance.new("Frame")
 			local UIAspectRatioConstraint = Instance.new("UIAspectRatioConstraint")
 			local Text = Instance.new("TextLabel")
@@ -790,11 +859,11 @@ function Biohazard.new(UITitle:string,IconId:string)
 			Item.Size = UDim2.new(0.899999976, 0, 0.899999976, 0)
 			Item.SizeConstraint = Enum.SizeConstraint.RelativeYY
 			Item.ZIndex = 12
-			
+
 			if Biohazard.ColorOnIcon then
 				Item.BackgroundColor3 = Biohazard.MainColor
 			end
-			
+
 			UICorner_3.CornerRadius = UDim.new(0.5, 0)
 			UICorner_3.Parent = Item
 
@@ -814,31 +883,31 @@ function Biohazard.new(UITitle:string,IconId:string)
 
 			UICorner_4.CornerRadius = UDim.new(0, 2)
 			UICorner_4.Parent = DropShadow
-			
+
 			local function SystemToggle(value)
-				
+
 				if value then
 					TweenService:Create(Item,TweenInfo.new(0.25),{Position = UDim2.new(0.75,0,0.5,0)}):Play()
 				else
 					TweenService:Create(Item,TweenInfo.new(0.25),{Position = UDim2.new(0.25,0,0.5,0)}):Play()
 				end
-				
+
 				task.spawn(function()
 					TweenService:Create(Item,TweenInfo.new(0.25),{Size = UDim2.new(0.65, 0, 0.65, 0)}):Play()
 					task.wait(0.1)
 					TweenService:Create(Item,TweenInfo.new(0.25),{Size = UDim2.new(0.899999976, 0, 0.899999976, 0)}):Play()
 				end)
 			end
-			
+
 			SystemToggle(Default)
-			
+
 			cretate_button(Toggle).MouseButton1Click:Connect(function()
 				Default = not Default
 				Create_Ripple(Toggle)
 				SystemToggle(Default)
 				callback(Default)
 			end)
-			
+
 			return Signal({},{
 				{
 					Name = 'Text',
@@ -860,7 +929,7 @@ function Biohazard.new(UITitle:string,IconId:string)
 				}
 			})
 		end
-		
+
 		function TabSelf:AddButton(ButtonString:string,callback)
 			local Button = Instance.new("Frame")
 			local UIAspectRatioConstraint = Instance.new("UIAspectRatioConstraint")
@@ -913,18 +982,18 @@ function Biohazard.new(UITitle:string,IconId:string)
 			Icon.SizeConstraint = Enum.SizeConstraint.RelativeYY
 			Icon.ZIndex = 10
 			Icon.Image = "rbxassetid://7734010488"
-			
+
 			if Biohazard.ColorOnIcon then
 				Icon.ImageColor3 = Biohazard.MainColor
 			end
-			
+
 			cretate_button(Button).MouseButton1Click:Connect(function()
 				Create_Ripple(Button)
 				if callback then
 					callback()
 				end
 			end)
-			
+
 			return Signal({},{
 				{
 					Name = 'Text',
@@ -940,12 +1009,12 @@ function Biohazard.new(UITitle:string,IconId:string)
 				}
 			})
 		end
-		
+
 		function TabSelf:AddSlider(SliderString:string,Min:number,Max:number,Default:number,callback)
 			Min = Min or 1
 			Max = Max or 100
 			Default = Default or Min
-			
+
 			local Slider = Instance.new("Frame")
 			local UIAspectRatioConstraint = Instance.new("UIAspectRatioConstraint")
 			local Text = Instance.new("TextLabel")
@@ -1044,14 +1113,14 @@ function Biohazard.new(UITitle:string,IconId:string)
 			NumberText.TextScaled = true
 			NumberText.TextSize = 14.000
 			NumberText.TextWrapped = true
-			
+
 			if Biohazard.ColorOnIcon then
 				NumberText.TextColor3 = Biohazard.MainColor
 			end
-			
+
 			local Size = UDim2.fromScale(Default / Max, 1)
 			ItemNumber.Size = Size
-			
+
 			local IsTouched = false
 
 			local function update(Input)
@@ -1085,7 +1154,7 @@ function Biohazard.new(UITitle:string,IconId:string)
 					end
 				end
 			end)
-			
+
 			return Signal({},{
 				{
 					Name = 'Text',
@@ -1110,7 +1179,7 @@ function Biohazard.new(UITitle:string,IconId:string)
 				}
 			})
 		end
-		
+
 		function TabSelf:AddDropdown(DropdownString:string,Info:{string},Defalut:Instance,callback)
 			Info = Info or {}
 			local Dropdown = Instance.new("Frame")
@@ -1189,11 +1258,11 @@ function Biohazard.new(UITitle:string,IconId:string)
 			NumberText.TextScaled = true
 			NumberText.TextSize = 14.000
 			NumberText.TextWrapped = true
-			
+
 			if Biohazard.ColorOnIcon then
 				NumberText.TextColor3 = Biohazard.MainColor
 			end
-			
+
 			DropShadow.Name = "DropShadow"
 			DropShadow.Parent = System
 			DropShadow.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -1221,7 +1290,7 @@ function Biohazard.new(UITitle:string,IconId:string)
 
 			UICorner_3.CornerRadius = UDim.new(0, 3)
 			UICorner_3.Parent = Scroll
-			
+
 			scrolling_connect(ScrollingFrame)
 			ScrollingFrame.Parent = Scroll
 			ScrollingFrame.Active = true
@@ -1240,7 +1309,7 @@ function Biohazard.new(UITitle:string,IconId:string)
 			UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
 			UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 			UIListLayout.Padding = UDim.new(0, 4)
-			
+
 			Scroll:GetPropertyChangedSignal('Size'):Connect(function()
 				if Scroll.Size.Y.Scale <= 0.05 then
 					Scroll.Visible = false
@@ -1248,7 +1317,7 @@ function Biohazard.new(UITitle:string,IconId:string)
 					Scroll.Visible = true
 				end
 			end)
-			
+
 			local function GetButton()
 
 				local Button = Instance.new("TextButton")
@@ -1266,35 +1335,35 @@ function Biohazard.new(UITitle:string,IconId:string)
 				Button.TextScaled = true
 				Button.TextSize = 14.000
 				Button.TextWrapped = true
-				
+
 				if Biohazard.ColorOnIcon then
 					Button.TextColor3 = Biohazard.MainColor
 				end
-				
+
 				UIAspectRatioConstraint.Parent = Button
 				UIAspectRatioConstraint.AspectRatio = 4.500
 				UIAspectRatioConstraint.AspectType = Enum.AspectType.ScaleWithParentSize
 
 				UICorner.CornerRadius = UDim.new(0, 3)
 				UICorner.Parent = Button
-				
+
 				return Button
 			end
-			
+
 			local function LoadItems()
 				for i,v in ipairs(ScrollingFrame:GetChildren()) do
 					if v:IsA('TextButton') then
 						v:Destroy()
 					end
 				end
-				
+
 				for i,v in ipairs(Info) do
 					local Button = GetButton()
 					Button.Text = tostring(v)
 					Button.Parent = ScrollingFrame
 					Button.MouseButton1Click:Connect(function()
 						Create_Ripple(Button)
-						
+
 						Defalut = v
 						NumberText.Text = (Defalut and tostring(Defalut)) or "NONE"
 						if callback then
@@ -1303,9 +1372,9 @@ function Biohazard.new(UITitle:string,IconId:string)
 					end)
 				end
 			end
-			
+
 			LoadItems()
-			
+
 			local ScrollValueBoolean = false
 			local function ScrollValue(va)
 				if va then
@@ -1314,15 +1383,15 @@ function Biohazard.new(UITitle:string,IconId:string)
 					TweenService:Create(Scroll,TweenInfo.new(0.2),{Size = UDim2.new(0.285826445, 0, 0, 0)}):Play()
 				end
 			end
-			
+
 			ScrollValue(ScrollValueBoolean)
-			
+
 			cretate_button(System).MouseButton1Click:Connect(function()
 				ScrollValueBoolean = not ScrollValueBoolean
 				ScrollValue(ScrollValueBoolean)
 				Create_Ripple(System)
 			end)
-			
+
 			return Signal({},{
 				{
 					Name = 'Text',
@@ -1347,7 +1416,7 @@ function Biohazard.new(UITitle:string,IconId:string)
 		end
 		return TabSelf
 	end
-	
+
 	local dragToggle = nil
 	local dragSpeed = 0.1
 	local dragStart = nil
@@ -1380,14 +1449,14 @@ function Biohazard.new(UITitle:string,IconId:string)
 			end
 		end
 	end)
-	
+
 	UserInputService.InputBegan:Connect(function(ker)
 		if ker.KeyCode == WindowSelf.Keybind then
 			WindowSelf.Gui = not WindowSelf.Gui
 			ToggleFunctions(WindowSelf.Gui)
 		end
 	end)
-	
+
 	return WindowSelf
 end
 
@@ -1411,7 +1480,7 @@ function Biohazard:Loader(LogoId:string,TitleString:string,Time:number)
 	Biohazard_Loader.ResetOnSpawn = false
 	Biohazard_Loader.IgnoreGuiInset = true
 	Biohazard_Loader.ResetOnSpawn = false
-	
+
 	Frame.Parent = Biohazard_Loader
 	Frame.Active = true
 	Frame.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -1429,7 +1498,7 @@ function Biohazard:Loader(LogoId:string,TitleString:string,Time:number)
 	Effect1.Transparency = NumberSequence.new{NumberSequenceKeypoint.new(0.00, 0.00), NumberSequenceKeypoint.new(1.00, 1.00)}
 	Effect1.Name = "Effect1"
 	Effect1.Parent = Frame
-	
+
 	EffectShadow.Name = "EffectShadow"
 	EffectShadow.Parent = Frame
 	EffectShadow.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -1457,13 +1526,13 @@ function Biohazard:Loader(LogoId:string,TitleString:string,Time:number)
 	Logo.BackgroundTransparency = 1.000
 	Logo.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	Logo.BorderSizePixel = 0
-	Logo.Position = UDim2.new(0.5, 0, 0.324999988, 0)
+	Logo.Position = UDim2.new(0.5, 0, 0.295, 0)
 	Logo.Size = UDim2.new(0.600000024, 0, 0.600000024, 0)
 	Logo.SizeConstraint = Enum.SizeConstraint.RelativeYY
 	Logo.ZIndex = 5
 	Logo.Image = LogoId or "rbxassetid://16435139396"
 	Logo.ImageTransparency = 1
-	
+
 	Frame_2.Parent = Frame
 	Frame_2.AnchorPoint = Vector2.new(0.5, 0.5)
 	Frame_2.BackgroundColor3 = Biohazard.MainColor
@@ -1473,7 +1542,7 @@ function Biohazard:Loader(LogoId:string,TitleString:string,Time:number)
 	Frame_2.Size = UDim2.new(0.949999988, 0, 0.00249999994, 0)
 	Frame_2.ZIndex = 2
 	Frame_2.BackgroundTransparency = 1
-	
+
 	Black.Name = "Black"
 	Black.Parent = Frame_2
 	Black.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -1504,29 +1573,157 @@ function Biohazard:Loader(LogoId:string,TitleString:string,Time:number)
 	Title.TextSize = 14.000
 	Title.TextWrapped = true
 	Title.TextTransparency = 1
-	
+
 	if Biohazard.ColorOnIcon then
 		Title.TextColor3 = Biohazard.MainColor
 	end
-	
+
 	TweenService:Create(Effect1,TweenInfo.new(1),{Offset = Vector2.new(0, 3)}):Play()
 	TweenService:Create(Effect1_2,TweenInfo.new(1),{Offset = Vector2.new(0, 3)}):Play()
 	TweenService:Create(Logo,TweenInfo.new(1.5),{ImageTransparency = 0}):Play()
 	TweenService:Create(Frame_2,TweenInfo.new(1.6),{BackgroundTransparency = 0}):Play()
 	TweenService:Create(Black,TweenInfo.new(1.7),{BackgroundTransparency = 0.9}):Play()
 	TweenService:Create(Title,TweenInfo.new(1.8),{TextTransparency = 0}):Play()
-	
+
 	task.wait(2 + Time)
-	
+
 	TweenService:Create(Effect1,TweenInfo.new(2),{Offset = Vector2.new(0, -3)}):Play()
 	TweenService:Create(Effect1_2,TweenInfo.new(2),{Offset = Vector2.new(0, -3)}):Play()
 	TweenService:Create(Logo,TweenInfo.new(1.75),{ImageTransparency = 1}):Play()
 	TweenService:Create(Frame_2,TweenInfo.new(1.5),{BackgroundTransparency = 1}):Play()
 	TweenService:Create(Black,TweenInfo.new(1.5),{BackgroundTransparency = 1}):Play()
 	TweenService:Create(Title,TweenInfo.new(1.7),{TextTransparency = 1}):Play()
-	
+
 	task.wait(2 + Time / 2)
-	
+
 	Biohazard_Loader:Destroy()
 end
+
+function Biohazard:Notification()
+	local ScreenGui = Instance.new("ScreenGui")
+	local Notify = Instance.new("Frame")
+	local UIListLayout = Instance.new("UIListLayout")
+
+	ScreenGui.Parent = CoreGui
+	ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+	ScreenGui.IgnoreGuiInset = false
+	ScreenGui.ResetOnSpawn = false
+	
+	Notify.Name = "Notify"
+	Notify.Parent = ScreenGui
+	Notify.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Notify.BackgroundTransparency = 1.000
+	Notify.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Notify.BorderSizePixel = 0
+	Notify.Position = UDim2.new(0.00775709189, 0, 0.0173370857, 0)
+	Notify.Size = UDim2.new(0.300000042, 0, 0.629403591, 0)
+
+	UIListLayout.Parent = Notify
+	UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+	UIListLayout.Padding = UDim.new(0, 3)
+	
+	return Signal({},{
+		{
+			Name = 'new',
+			Func = function(TextString:string,Time:number)
+				task.spawn(function()
+					Time = Time or 3
+
+					local Notification = Instance.new("Frame")
+					local UICorner = Instance.new("UICorner")
+					local MainColorFrame = Instance.new("Frame")
+					local UICorner_2 = Instance.new("UICorner")
+					local Text = Instance.new("TextLabel")
+
+					Notification.Name = "Notification"
+					Notification.Parent = Notify
+					Notification.BackgroundColor3 = Color3.fromRGB(35, 39, 42)
+					Notification.BorderColor3 = Color3.fromRGB(0, 0, 0)
+					Notification.BorderSizePixel = 0
+					Notification.ClipsDescendants = true
+					Notification.Size = UDim2.new(0, 0, 0.0700000003, 0)
+					Notification.ZIndex = 2
+					Notification.BackgroundTransparency = 0
+
+					UICorner.CornerRadius = UDim.new(0, 3)
+					UICorner.Parent = Notification
+
+					MainColorFrame.Name = "MainColorFrame"
+					MainColorFrame.Parent = Notification
+					MainColorFrame.AnchorPoint = Vector2.new(0, 1)
+					MainColorFrame.BackgroundColor3 = Color3.fromRGB(255, 0, 4)
+					MainColorFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+					MainColorFrame.BorderSizePixel = 0
+					MainColorFrame.Position = UDim2.new(0, 0, 1, 0)
+					MainColorFrame.Size = UDim2.new(1, 0, 0, 2)
+					MainColorFrame.BackgroundTransparency = 1
+
+					UICorner_2.CornerRadius = UDim.new(0, 3)
+					UICorner_2.Parent = MainColorFrame
+
+					Text.Name = "Text"
+					Text.Parent = Notification
+					Text.AnchorPoint = Vector2.new(0.5, 0)
+					Text.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+					Text.BackgroundTransparency = 1.000
+					Text.BorderColor3 = Color3.fromRGB(0, 0, 0)
+					Text.BorderSizePixel = 0
+					Text.Position = UDim2.new(0.5, 0, 0.118000001, 0)
+					Text.Size = UDim2.new(0.949999988, 0, 0.699999988, 0)
+					Text.ZIndex = 4
+					Text.Font = Enum.Font.Code
+					Text.Text = TextString or "Notification"
+					Text.TextColor3 = Color3.fromRGB(255, 255, 255)
+					Text.TextScaled = true
+					Text.TextSize = 14.000
+					Text.TextWrapped = true
+					Text.TextXAlignment = Enum.TextXAlignment.Left
+					Text.TextTransparency = 1
+
+					TweenService:Create(Text,TweenInfo.new(1,Enum.EasingStyle.Quint,Enum.EasingDirection.InOut),{
+						TextTransparency = 0
+					}):Play()
+
+					TweenService:Create(MainColorFrame,TweenInfo.new(0.4),{
+						BackgroundTransparency = 0
+					}):Play()
+
+
+					local TextSize = TextService:GetTextSize(Text.Text,Text.TextSize / 1.5,Text.Font,Vector2.new(math.huge,math.huge))
+
+					TweenService:Create(Notification,TweenInfo.new(0.35,Enum.EasingStyle.Back),{
+						BackgroundTransparency = 0,
+						Size = UDim2.new(0,TextSize.X + 21,0.07,0)
+					}):Play()
+
+					task.wait(Time + 1.2)
+
+					TweenService:Create(Notification,TweenInfo.new(0.4,Enum.EasingStyle.Back,Enum.EasingDirection.In),{
+						BackgroundTransparency = 1,
+						Size = UDim2.new(0,0,0.07,0)
+					}):Play()
+
+					TweenService:Create(MainColorFrame,TweenInfo.new(0.4),{
+						BackgroundTransparency = 1
+					}):Play()
+
+					TweenService:Create(Text,TweenInfo.new(0.1256),{
+						TextTransparency = 1
+					}):Play()
+
+					task.wait(0.5)
+					
+					TweenService:Create(Notification,TweenInfo.new(0.4),{
+						BackgroundTransparency = 1,
+						Size = UDim2.new(0,0,-0.01,0)
+					}):Play()
+					
+					task.wait(0.4)
+					Notification:Destroy()
+				end)
+			end,
+		}
+	})
+end
+
 return Biohazard
