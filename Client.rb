@@ -43,8 +43,7 @@ function Teleport:Noclip(val)
 end
 function Teleport:TelaportBypassed(Target)
 
-	if (tick() - SpawnTick) > 1 then
-		print('you stick fuck')
+	if (tick() - SpawnTick) < 1 then
 		return
 	end
 
