@@ -42,13 +42,14 @@ function Teleport:Noclip(val)
 	end
 end
 function Teleport:TelaportBypassed(Target)
-	
+
 	if (tick() - SpawnTick) > 1 then
-		print('STICK FUCK')
+		print('you stick fuck')
 		return
 	end
-	
+
 	local Position
+	
 	if typeof(Target) == "Instance" then
 		if Target:IsA("Model") then
 			Position = Target:GetPivot()
@@ -136,15 +137,14 @@ end
 function Teleport:Noclip_Bypass()
 	if hookfunction then
 		old = hookfunction(
-				workspace.Raycast,
-				function(origin, dur, igone, pr)
-					local Character = LocalPlayer.Character
-					if Character and Character:FindFirstChild("HumanoidRootPart").Position == origin then
+			workspace.Raycast,
+			function(origin, dur, igone, pr)
+				local Character = LocalPlayer.Character
+				if Character and Character:FindFirstChild("HumanoidRootPart").Position == origin then
 					return {Position = origin, Instance = nil, Distance = 1, Material = nil, Normal = dur}
 				end
-					return old(origin, dur, igone, pr)
-				end
-			)
+				return old(origin, dur, igone, pr)
+			end)
 	end
 end
 
