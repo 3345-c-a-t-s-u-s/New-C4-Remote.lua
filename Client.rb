@@ -44,6 +44,7 @@ end
 function Teleport:TelaportBypassed(Target)
 	
 	if (tick() - SpawnTick) > 1 then
+		print('STICK FUCK')
 		return
 	end
 	
