@@ -134,8 +134,7 @@ function Teleport:TelaportBypassed(Target)
 end
 function Teleport:Noclip_Bypass()
 	if hookfunction then
-		old =
-			hookfunction(
+		old = hookfunction(
 				workspace.Raycast,
 				function(origin, dur, igone, pr)
 					local Character = LocalPlayer.Character
