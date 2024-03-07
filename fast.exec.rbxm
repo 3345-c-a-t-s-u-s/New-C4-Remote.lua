@@ -1,0 +1,228 @@
+local Highlight = loadstring(game:HttpGet('https://raw.githubusercontent.com/infyiff/backup/main/SimpleSpyV3/highlight.lua'))()
+
+local ScreenGui = Instance.new("ScreenGui")
+local MainFrame = Instance.new("Frame")
+local UICorner = Instance.new("UICorner")
+local DropShadow = Instance.new("ImageLabel")
+local MainTab = Instance.new("Frame")
+local Title = Instance.new("TextLabel")
+local Frame = Instance.new("Frame")
+local UICorner_2 = Instance.new("UICorner")
+local Editor = Instance.new("Frame")
+local UICorner_3 = Instance.new("UICorner")
+local UIStroke = Instance.new("UIStroke")
+local ExecuteButton = Instance.new("TextButton")
+local UICorner_4 = Instance.new("UICorner")
+local ClearButton = Instance.new("TextButton")
+local UICorner_5 = Instance.new("UICorner")
+local PasteButton = Instance.new("TextButton")
+local UICorner_6 = Instance.new("UICorner")
+local UIStroke_2 = Instance.new("UIStroke")
+
+ScreenGui.Parent = game.CoreGui
+
+MainFrame.Name = "MainFrame"
+MainFrame.Parent = ScreenGui
+MainFrame.AnchorPoint = Vector2.new(0.5, 0.5)
+MainFrame.BackgroundColor3 = Color3.fromRGB(35, 37, 44)
+MainFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+MainFrame.BorderSizePixel = 0
+MainFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
+MainFrame.Size = UDim2.new(0.100000001, 300, 0.100000001, 200)
+
+UICorner.CornerRadius = UDim.new(0, 2)
+UICorner.Parent = MainFrame
+
+DropShadow.Name = "DropShadow"
+DropShadow.Parent = MainFrame
+DropShadow.AnchorPoint = Vector2.new(0.5, 0.5)
+DropShadow.BackgroundTransparency = 1.000
+DropShadow.BorderSizePixel = 0
+DropShadow.Position = UDim2.new(0.5, 0, 0.5, 0)
+DropShadow.Size = UDim2.new(1, 47, 1, 47)
+DropShadow.ZIndex = 0
+DropShadow.Image = "rbxassetid://6014261993"
+DropShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
+DropShadow.ImageTransparency = 0.500
+DropShadow.ScaleType = Enum.ScaleType.Slice
+DropShadow.SliceCenter = Rect.new(49, 49, 450, 450)
+
+MainTab.Name = "MainTab"
+MainTab.Parent = MainFrame
+MainTab.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+MainTab.BackgroundTransparency = 1.000
+MainTab.BorderColor3 = Color3.fromRGB(0, 0, 0)
+MainTab.BorderSizePixel = 0
+MainTab.Size = UDim2.new(1, 0, 1, 0)
+MainTab.ZIndex = 2
+
+Title.Name = "Title"
+Title.Parent = MainTab
+Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Title.BackgroundTransparency = 1.000
+Title.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Title.BorderSizePixel = 0
+Title.Position = UDim2.new(0.0178717319, 0, 0.0232846942, 0)
+Title.Size = UDim2.new(0.95998776, 0, 0.076715298, 0)
+Title.Font = Enum.Font.Code
+Title.Text = "HAZARD (FAST EXECUTOR)"
+Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+Title.TextScaled = true
+Title.TextSize = 14.000
+Title.TextWrapped = true
+Title.TextXAlignment = Enum.TextXAlignment.Left
+
+Frame.Parent = Title
+Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Frame.BorderSizePixel = 0
+Frame.Position = UDim2.new(0, 0, 1, 0)
+Frame.Size = UDim2.new(1, 0, 0.0399999991, 0)
+
+UICorner_2.CornerRadius = UDim.new(0.5, 0)
+UICorner_2.Parent = Frame
+
+Editor.Name = "Editor"
+Editor.Parent = MainTab
+Editor.AnchorPoint = Vector2.new(0.5, 0.5)
+Editor.BackgroundColor3 = Color3.fromRGB(22, 22, 26)
+Editor.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Editor.BorderSizePixel = 0
+Editor.Position = UDim2.new(0.497865528, 0, 0.5, 0)
+Editor.Size = UDim2.new(0.959987581, 0, 0.713722408, 0)
+
+UICorner_3.CornerRadius = UDim.new(0, 2)
+UICorner_3.Parent = Editor
+
+UIStroke.Transparency = 0.750
+UIStroke.Color = Color3.fromRGB(255, 255, 255)
+UIStroke.Parent = Editor
+
+ExecuteButton.Name = "ExecuteButton"
+ExecuteButton.Parent = MainTab
+ExecuteButton.BackgroundColor3 = Color3.fromRGB(22, 24, 29)
+ExecuteButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
+ExecuteButton.BorderSizePixel = 0
+ExecuteButton.Position = UDim2.new(0.0179999806, 0, 0.875999928, 0)
+ExecuteButton.Size = UDim2.new(0.260845572, 0, 0.099999994, 0)
+ExecuteButton.Font = Enum.Font.Code
+ExecuteButton.Text = "</> Execute"
+ExecuteButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+ExecuteButton.TextScaled = true
+ExecuteButton.TextSize = 14.000
+ExecuteButton.TextWrapped = true
+
+UICorner_4.CornerRadius = UDim.new(0, 5)
+UICorner_4.Parent = ExecuteButton
+
+ClearButton.Name = "ClearButton"
+ClearButton.Parent = MainTab
+ClearButton.BackgroundColor3 = Color3.fromRGB(22, 24, 29)
+ClearButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
+ClearButton.BorderSizePixel = 0
+ClearButton.Position = UDim2.new(0.380540848, 0, 0.875999928, 0)
+ClearButton.Size = UDim2.new(0.237867624, 0, 0.099999994, 0)
+ClearButton.Font = Enum.Font.Code
+ClearButton.Text = "</> Clear"
+ClearButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+ClearButton.TextScaled = true
+ClearButton.TextSize = 14.000
+ClearButton.TextWrapped = true
+
+UICorner_5.CornerRadius = UDim.new(0, 5)
+UICorner_5.Parent = ClearButton
+
+PasteButton.Name = "PasteButton"
+PasteButton.Parent = MainTab
+PasteButton.BackgroundColor3 = Color3.fromRGB(22, 24, 29)
+PasteButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
+PasteButton.BorderSizePixel = 0
+PasteButton.Position = UDim2.new(0.720103741, 0, 0.875999928, 0)
+PasteButton.Size = UDim2.new(0.255739361, 0, 0.099999994, 0)
+PasteButton.Font = Enum.Font.Code
+PasteButton.Text = "</> Paste"
+PasteButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+PasteButton.TextScaled = true
+PasteButton.TextSize = 14.000
+PasteButton.TextWrapped = true
+
+UICorner_6.CornerRadius = UDim.new(0, 5)
+UICorner_6.Parent = PasteButton
+
+UIStroke_2.Transparency = 0.750
+UIStroke_2.Color = Color3.fromRGB(255, 255, 255)
+UIStroke_2.Parent = MainFrame
+local CodeEditor = Highlight.new(Editor)
+
+local TextBoxEditor = Instance.new("TextBox")
+
+TextBoxEditor.Parent = Editor
+TextBoxEditor.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextBoxEditor.BackgroundTransparency = 1.000
+TextBoxEditor.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextBoxEditor.BorderSizePixel = 0
+TextBoxEditor.Size = UDim2.new(1, 0, 1, 0)
+TextBoxEditor.ClearTextOnFocus = false
+TextBoxEditor.Font = Enum.Font.Code
+TextBoxEditor.Text = ""
+TextBoxEditor.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextBoxEditor.TextSize = 10.000
+TextBoxEditor.TextXAlignment = Enum.TextXAlignment.Left
+TextBoxEditor.TextYAlignment = Enum.TextYAlignment.Top
+TextBoxEditor.ZIndex = 999
+TextBoxEditor.MultiLine = true
+
+TextBoxEditor:GetPropertyChangedSignal('Text'):Connect(function()
+	CodeEditor:setRaw(TextBoxEditor.Text)
+end)
+
+TextBoxEditor.FocusLost:Connect(function()
+	TextBoxEditor.TextTransparency = 0.9
+end)
+
+TextBoxEditor.Focused:Connect(function()
+	TextBoxEditor.TextTransparency = 0.1
+end)
+
+ClearButton.MouseButton1Click:Connect(function()
+	TextBoxEditor.Text = ''
+end)
+
+ExecuteButton.MouseButton1Click:Connect(function()
+	loadstring(TextBoxEditor.Text)()
+end)
+
+
+local UIS = game:GetService('UserInputService')
+local dragToggle = nil
+local dragSpeed = 0.1
+local dragStart = nil
+local startPos = nil
+
+local function updateInput(input)
+	local delta = input.Position - dragStart
+	local position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X,
+		startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+	game:GetService('TweenService'):Create(MainFrame, TweenInfo.new(dragSpeed), {Position = position}):Play()
+end
+
+Title.InputBegan:Connect(function(input)
+	if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) then 
+		dragToggle = true
+		dragStart = input.Position
+		startPos = MainFrame.Position
+		input.Changed:Connect(function()
+			if input.UserInputState == Enum.UserInputState.End then
+				dragToggle = false
+			end
+		end)
+	end
+end)
+
+UIS.InputChanged:Connect(function(input)
+	if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+		if dragToggle then
+			updateInput(input)
+		end
+	end
+end)
