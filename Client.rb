@@ -48,7 +48,7 @@ function Teleport:TelaportBypassed(Target)
 	end
 
 	local Position
-	
+
 	if typeof(Target) == "Instance" then
 		if Target:IsA("Model") then
 			Position = Target:GetPivot()
@@ -69,9 +69,13 @@ function Teleport:TelaportBypassed(Target)
 		return
 	end
 	local RootPart = Character:FindFirstChild("HumanoidRootPart")
+	
 	if RootPart then
 		local Distance = Teleport:GetDistance(Position.Position)
 		local Run
+		
+		local Style = (Distance <= Teleport.Setting.MinDistance * 2.5 and Enum.EasingStyle.Quad) or Enum.EasingStyle.Linear
+			
 		if Distance > Teleport.Setting.MinDistance then
 			Teleport:Noclip(true)
 			local LasterPosition = RootPart.CFrame
@@ -97,7 +101,7 @@ function Teleport:TelaportBypassed(Target)
 					Run =
 						TweenService:Create(
 							RootPart,
-							TweenInfo.new(Distance / Teleport.Setting.Speed, Enum.EasingStyle.Linear),
+							TweenInfo.new(Distance / Teleport.Setting.Speed, Style),
 							{CFrame = PositionPart}
 						)
 				else
@@ -105,7 +109,7 @@ function Teleport:TelaportBypassed(Target)
 						Run =
 							TweenService:Create(
 								RootPart,
-								TweenInfo.new(Distance / Teleport.Setting.Speed, Enum.EasingStyle.Linear),
+								TweenInfo.new(Distance / Teleport.Setting.Speed, Style),
 								{CFrame = PositionPart}
 							)
 					end
@@ -123,7 +127,7 @@ function Teleport:TelaportBypassed(Target)
 			if Distance < Teleport.Setting.MinDistance then
 				if Teleport.Teleporting.Target == Position then
 					Teleport:Noclip(false)
-					TweenService:Create(RootPart, TweenInfo.new(0.35), {CFrame = Position}):Play()
+					TweenService:Create(RootPart, TweenInfo.new(0.5,Style), {CFrame = Position}):Play()
 				end
 			end
 		else
