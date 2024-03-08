@@ -74,7 +74,7 @@ function Teleport:TelaportBypassed(Target)
 		local Distance = Teleport:GetDistance(Position.Position)
 		local Run
 		
-		local Style = (Distance <= Teleport.Setting.MinDistance * 2.5 and Enum.EasingStyle.Quad) or Enum.EasingStyle.Linear
+		local Style = (Distance <= Teleport.Setting.MinDistance * 5 and Enum.EasingStyle.Quint) or Enum.EasingStyle.Linear
 			
 		if Distance > Teleport.Setting.MinDistance then
 			Teleport:Noclip(true)
