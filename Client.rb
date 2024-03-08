@@ -127,11 +127,11 @@ function Teleport:TelaportBypassed(Target)
 			if Distance < Teleport.Setting.MinDistance then
 				if Teleport.Teleporting.Target == Position then
 					Teleport:Noclip(false)
-					TweenService:Create(RootPart, TweenInfo.new(1,Enum.EasingStyle.Quint), {CFrame = Position}):Play()
+					TweenService:Create(RootPart, TweenInfo.new(0.5,Enum.EasingStyle.Quint), {CFrame = Position}):Play()
 				end
 			end
 		else
-			RootPart.CFrame = Position
+			TweenService:Create(RootPart, TweenInfo.new(0.45,Enum.EasingStyle.Quint), {CFrame = Position}):Play()
 			Teleport:PartPhysical(RootPart)
 			Teleport:PartPhysical(Character:FindFirstChild("Head"))
 		end
