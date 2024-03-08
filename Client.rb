@@ -127,7 +127,7 @@ function Teleport:TelaportBypassed(Target)
 			if Distance < Teleport.Setting.MinDistance then
 				if Teleport.Teleporting.Target == Position then
 					Teleport:Noclip(false)
-					TweenService:Create(RootPart, TweenInfo.new(0.5,Style), {CFrame = Position}):Play()
+					TweenService:Create(RootPart, TweenInfo.new(1,Enum.EasingStyle.Quint), {CFrame = Position}):Play()
 				end
 			end
 		else
