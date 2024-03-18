@@ -1,0 +1,241 @@
+local PEDO = {}
+
+function PEDO.loader()
+	local Loader = Instance.new("ScreenGui")
+	local Hazard = Instance.new("Frame")
+	local HazardCenter1 = Instance.new("ImageLabel")
+	local HazardCenter2 = Instance.new("ImageLabel")
+	local HazardCenter3 = Instance.new("ImageLabel")
+	local Hazardtick1 = Instance.new("ImageLabel")
+	local Hazardtick1_2 = Instance.new("ImageLabel")
+	local Hazardtick3 = Instance.new("ImageLabel")
+	local TextLabel = Instance.new("TextLabel")
+	local UIGradient = Instance.new("UIGradient")
+
+	Loader.Name = "Loader"
+	Loader.Parent = game:FindFirstChild('CoreGui') or game.Players.LocalPlayer:WaitForChild("PlayerGui")
+	Loader.ResetOnSpawn = false
+	Loader.IgnoreGuiInset = true
+	Loader.ZIndexBehavior = Enum.ZIndexBehavior.Global
+
+	Hazard.Name = "Hazard"
+	Hazard.Parent = Loader
+	Hazard.AnchorPoint = Vector2.new(0.5, 0.5)
+	Hazard.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Hazard.BackgroundTransparency = 1.000
+	Hazard.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Hazard.BorderSizePixel = 0
+	Hazard.Position = UDim2.fromScale(0.5,0.5)
+	Hazard.Size = UDim2.new(0, 0, 0, 0)
+	Hazard.SizeConstraint = Enum.SizeConstraint.RelativeYY
+	Hazard.Rotation = 0
+
+	HazardCenter1.Name = "HazardCenter1"
+	HazardCenter1.Parent = Hazard
+	HazardCenter1.AnchorPoint = Vector2.new(0.5, 0.5)
+	HazardCenter1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	HazardCenter1.BackgroundTransparency = 1.000
+	HazardCenter1.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	HazardCenter1.BorderSizePixel = 0
+	HazardCenter1.Position = UDim2.new(0.5,0,0.5,0)
+	HazardCenter1.Rotation = 0--23.000
+	HazardCenter1.Size = UDim2.fromScale(0,0)
+	HazardCenter1.SizeConstraint = Enum.SizeConstraint.RelativeYY
+	HazardCenter1.Image = "http://www.roblox.com/asset/?id=16787877314"
+
+	HazardCenter2.Name = "HazardCenter2"
+	HazardCenter2.Parent = Hazard
+	HazardCenter2.AnchorPoint = Vector2.new(0.5, 0.5)
+	HazardCenter2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	HazardCenter2.BackgroundTransparency = 1.000
+	HazardCenter2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	HazardCenter2.BorderSizePixel = 0
+	HazardCenter2.Position = UDim2.new(0.5,0,0.5,0)
+	HazardCenter2.Rotation = 0
+	HazardCenter2.Size = UDim2.new(0, 0, 0, 0)
+	HazardCenter2.SizeConstraint = Enum.SizeConstraint.RelativeYY
+	HazardCenter2.Image = "http://www.roblox.com/asset/?id=16787877314"
+
+	HazardCenter3.Name = "HazardCenter3"
+	HazardCenter3.Parent = Hazard
+	HazardCenter3.AnchorPoint = Vector2.new(0.5, 0.5)
+	HazardCenter3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	HazardCenter3.BackgroundTransparency = 1.000
+	HazardCenter3.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	HazardCenter3.BorderSizePixel = 0
+	HazardCenter3.Position = UDim2.new(0.5,0,0.5,0)
+	HazardCenter3.Rotation = 0
+	HazardCenter3.Size = UDim2.new(0, 0, 0, 0)
+	HazardCenter3.SizeConstraint = Enum.SizeConstraint.RelativeYY
+	HazardCenter3.Image = "http://www.roblox.com/asset/?id=16787877314"
+
+	Hazardtick1.Name = "Hazardtick1"
+	Hazardtick1.Parent = Hazard
+	Hazardtick1.AnchorPoint = Vector2.new(0.5, 0.5)
+	Hazardtick1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Hazardtick1.BackgroundTransparency = 1.000
+	Hazardtick1.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Hazardtick1.BorderSizePixel = 0
+	Hazardtick1.Position = UDim2.new(0.5,0,0.5,0)
+	Hazardtick1.Rotation = 0
+	Hazardtick1.Size = UDim2.new(0,0,0,0)
+	Hazardtick1.SizeConstraint = Enum.SizeConstraint.RelativeYY
+	Hazardtick1.ZIndex = -5
+	Hazardtick1.Image = "http://www.roblox.com/asset/?id=16787880358"
+
+	Hazardtick1_2.Name = "Hazardtick1"
+	Hazardtick1_2.Parent = Hazard
+	Hazardtick1_2.AnchorPoint = Vector2.new(0.5, 0.5)
+	Hazardtick1_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Hazardtick1_2.BackgroundTransparency = 1.000
+	Hazardtick1_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Hazardtick1_2.BorderSizePixel = 0
+	Hazardtick1_2.Position = UDim2.new(0.5,0,0.5,0)
+	Hazardtick1_2.Rotation = 0
+	Hazardtick1_2.Size = UDim2.new(0, 0, 0, 0)
+	Hazardtick1_2.SizeConstraint = Enum.SizeConstraint.RelativeYY
+	Hazardtick1_2.ZIndex = -5
+	Hazardtick1_2.Image = "http://www.roblox.com/asset/?id=16787880358"
+
+	Hazardtick3.Name = "Hazardtick3"
+	Hazardtick3.Parent = Hazard
+	Hazardtick3.AnchorPoint = Vector2.new(0.5, 0.5)
+	Hazardtick3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Hazardtick3.BackgroundTransparency = 1.000
+	Hazardtick3.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Hazardtick3.BorderSizePixel = 0
+	Hazardtick3.Position = UDim2.new(0.5,0,0.5,0)
+	Hazardtick3.Rotation = 0
+	Hazardtick3.Size = UDim2.new(0, 0, 0, 0)
+	Hazardtick3.SizeConstraint = Enum.SizeConstraint.RelativeYY
+	Hazardtick3.ZIndex = -5
+	Hazardtick3.Image = "http://www.roblox.com/asset/?id=16787880358"
+
+	TextLabel.Parent = Loader
+	TextLabel.AnchorPoint = Vector2.new(0.5, 0.5)
+	TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	TextLabel.BackgroundTransparency = 1.000
+	TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	TextLabel.BorderSizePixel = 0
+	TextLabel.Position = UDim2.new(0.684764922, 0, 0.5, 0)
+	TextLabel.Size = UDim2.new(0.487329533, 0, 0.091570904, 0)
+	TextLabel.Font = Enum.Font.GothamBold
+	TextLabel.Text = "BEDOL HUB"
+	TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+	TextLabel.TextScaled = true
+	TextLabel.TextSize = 59.000
+	TextLabel.TextStrokeTransparency = 0.700
+	TextLabel.TextWrapped = true
+	TextLabel.TextXAlignment = Enum.TextXAlignment.Left
+
+	UIGradient.Offset = Vector2.new(-1,0)
+	UIGradient.Transparency = NumberSequence.new{NumberSequenceKeypoint.new(0.00, 0.00), NumberSequenceKeypoint.new(0.85, 0.00), NumberSequenceKeypoint.new(1.00, 1.00)}
+	UIGradient.Parent = TextLabel
+	UIGradient.Rotation = 15
+	
+	local Load = Instance.new("TextLabel")
+	local UIGradientvc = Instance.new("UIGradient")
+	
+	Load.Name = "Load"
+	Load.Parent = Loader
+	Load.AnchorPoint = Vector2.new(0.5, 0.5)
+	Load.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Load.BackgroundTransparency = 1.000
+	Load.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Load.BorderSizePixel = 0
+	Load.Position = UDim2.new(0.689285755, 0, 0.544209361, 0)
+	Load.Size = UDim2.new(0.488287956, 0, 0.0200868417, 0)
+	Load.Font = Enum.Font.GothamBold
+	Load.Text = "Loading..."
+	Load.TextColor3 = Color3.fromRGB(255, 255, 255)
+	Load.TextScaled = true
+	Load.TextSize = 59.000
+	Load.TextStrokeTransparency = 0.700
+	Load.TextTransparency = 0.500
+	Load.TextWrapped = true
+	Load.TextXAlignment = Enum.TextXAlignment.Left
+	Load.Visible = false
+	
+	UIGradientvc.Transparency = NumberSequence.new{NumberSequenceKeypoint.new(0.00, 0.00), NumberSequenceKeypoint.new(0.85, 0.00), NumberSequenceKeypoint.new(1.00, 1.00)}
+	UIGradientvc.Parent = Load
+	
+	pcall(function()
+		local function HidenToView()
+			local k = game:GetService('TweenService')
+			local enum = Enum.EasingStyle.Back
+
+			HazardCenter1.Rotation = 0
+			HazardCenter2.Rotation = 0
+			HazardCenter3.Rotation = 0
+
+			k:Create(Hazard,TweenInfo.new(0.6,enum),{Size = UDim2.new(0.300000012, 0, 0.300000012, 0)}):Play()
+			k:Create(HazardCenter1,TweenInfo.new(0.5,enum),{Rotation = 23,Size = UDim2.new(0.5, 0, 0.5, 0),Position = UDim2.new(0.275000006, 0, 0.625, 0)}):Play()
+			k:Create(HazardCenter2,TweenInfo.new(0.6,enum),{Rotation = 144.500,Size = UDim2.new(0.5, 0, 0.5, 0),Position = UDim2.new(0.49000001, 0, 0.252000004, 0)}):Play()
+			k:Create(HazardCenter3,TweenInfo.new(0.7,enum),{Rotation = -100,Size = UDim2.new(0.5, 0, 0.5, 0),Position = UDim2.new(0.709999979, 0, 0.620000005, 0)}):Play()
+
+			k:Create(Hazardtick1,TweenInfo.new(0.8,enum),{Rotation = 56.000,Size = UDim2.new(1, 0, 1, 0),Position = UDim2.new(0.700254142, 0, 0.413823307, 0)}):Play()
+			k:Create(Hazardtick1_2,TweenInfo.new(0.9,enum),{Rotation = -56.000,Size = UDim2.new(1, 0, 1, 0),Position = UDim2.new(0.318839461, 0, 0.356033206, 0)}):Play()
+			k:Create(Hazardtick3,TweenInfo.new(1,enum),{Rotation = -182.000,Size = UDim2.new(1, 0, 1, 0),Position = UDim2.new(0.463314712, 0, 0.720110834, 0)}):Play()
+
+		end
+
+		local function ViewToHiden()
+			local k = game:GetService('TweenService')
+			local enum,h = Enum.EasingStyle.Back,Enum.EasingDirection.In
+
+			k:Create(Hazard,TweenInfo.new(1,enum,h),{Size = UDim2.new(0,0,0,0)}):Play()
+			k:Create(HazardCenter1,TweenInfo.new(0.9,enum,h),{Rotation = 23,Size = UDim2.new(0,0,0,0),Position = UDim2.new(0.5,0,0.5,0)}):Play()
+			k:Create(HazardCenter2,TweenInfo.new(0.8,enum,h),{Rotation = 144.500,Size = UDim2.new(0,0,0,0),Position = UDim2.new(0.5,0,0.5,0)}):Play()
+			k:Create(HazardCenter3,TweenInfo.new(0.7,enum,h),{Rotation = -100,Size = UDim2.new(0,0,0,0),Position = UDim2.new(0.5,0,0.5,0)}):Play()
+
+			k:Create(Hazardtick1,TweenInfo.new(0.6,enum,h),{Rotation = 56.000,Size = UDim2.new(0,0,0,0),Position = UDim2.new(0.5,0,0.5,0)}):Play()
+			k:Create(Hazardtick1_2,TweenInfo.new(0.55,enum,h),{Rotation = -56.000,Size = UDim2.new(0,0,0,0),Position = UDim2.new(0.5,0,0.5,0)}):Play()
+			k:Create(Hazardtick3,TweenInfo.new(5,enum,h),{Rotation = -182.000,Size = UDim2.new(0,0,0,0),Position = UDim2.new(0.5,0,0.5,0)}):Play()
+
+		end
+
+		HidenToView()
+
+		task.wait(1.5)
+
+		game:GetService('TweenService'):Create(Hazard,TweenInfo.new(1.5,Enum.EasingStyle.Back,Enum.EasingDirection.InOut),{Rotation = -240}):Play()
+
+		task.wait(0.1)
+
+		local UI = game:GetService('TweenService'):Create(Hazard,TweenInfo.new(1.5,Enum.EasingStyle.Back,Enum.EasingDirection.InOut),{Position = UDim2.new(0.300000012, 0, 0.5, 0)})
+
+		UI:Play()
+
+		task.wait(1.5)
+
+		game:GetService('TweenService'):Create(TextLabel,TweenInfo.new(0.5),{Size = UDim2.new(0.497329533, 0, 0.101570904, 0)}):Play()
+		game:GetService('TweenService'):Create(UIGradient,TweenInfo.new(1.45,Enum.EasingStyle.Quint),{Offset = Vector2.new(0.5,0)}):Play()
+
+		task.wait(3)
+
+		Load.Visible = true
+		repeat task.wait() until game:IsLoaded()
+
+		Load.Visible = false
+
+		game:GetService('TweenService'):Create(UIGradient,TweenInfo.new(1.45,Enum.EasingStyle.Quint),{Offset = Vector2.new(-1,0)}):Play()
+
+		game:GetService('TweenService'):Create(Hazard,TweenInfo.new(1.5,Enum.EasingStyle.Back,Enum.EasingDirection.InOut),{Rotation = 0}):Play()
+
+		task.wait(0.1)
+
+		game:GetService('TweenService'):Create(Hazard,TweenInfo.new(1.5,Enum.EasingStyle.Back,Enum.EasingDirection.InOut),{Position = UDim2.fromScale(0.5,0.5)}):Play()
+
+		task.wait(0.3)
+
+		ViewToHiden()
+
+		task.wait(1.4)
+	end)
+	
+	task.wait()
+	
+	Loader:Destroy()
+end
+
+return PEDO
