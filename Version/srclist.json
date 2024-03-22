@@ -1,1 +1,31 @@
+{
+    "Main": {
+        "Name": "Main Loader",
+        "Src": "loadstring(game:HttpGet('https://raw.githubusercontent.com/3345-c-a-t-s-u-s/New-C4-Remote.lua/main/Loader.json'))"
+    },
 
+    "Bee Swarm Simulator": {
+        "Name": "Bee Swarm Simulator",
+        "Src": "loadstring(game:HttpGet('https://raw.githubusercontent.com/3345-c-a-t-s-u-s/New-C4-Remote.lua/main/BeeSwarm.cpp'))"
+    },
+    "Bladeball": {
+        "Name": "Blade Ball",
+        "Src": "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/nqxlOfc/Loaders/main/Blade_Ball.lua\"))()"
+    },
+    "Build A Boat For Treasure": {
+        "Name": "Build A Boat For Treasure",
+        "Src": "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/3345-c-a-t-s-u-s/New-C4-Remote.lua/main/BuildABoat.py\"))()"
+    },
+    "Door": {
+        "Name": "DOORS",
+        "Src": "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/3345-c-a-t-s-u-s/New-C4-Remote.lua/main/Doors.c\"))()"
+    },
+    "Nico Nextbot": {
+        "Name": "Nico Nextbot",
+        "Src": "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/3345-c-a-t-s-u-s/New-C4-Remote.lua/main/NicoNextbot.js\"))()"
+    },
+    "SCP 3008": {
+        "Name": "SCP 3008",
+        "Src": "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/3345-c-a-t-s-u-s/New-C4-Remote.lua/main/SCP_3008.php\"))()"
+    },
+}
