@@ -27,5 +27,5 @@
     "SCP 3008": {
         "Name": "SCP 3008",
         "Src": "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/3345-c-a-t-s-u-s/New-C4-Remote.lua/main/SCP_3008.php\"))()"
-    },
+    }
 }
