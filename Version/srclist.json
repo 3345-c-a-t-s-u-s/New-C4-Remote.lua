@@ -5,12 +5,12 @@
     },
 
     "BladeBallBETA": {
-         "Name": "Blade Ball (BETA)",
+         "Name": "Blade Ball (BETA : KEY SYSTEM)",
          "Src": "loadstring(game:HttpGet('https://raw.githubusercontent.com/3345-c-a-t-s-u-s/New-C4-Remote.lua/main/BetaTest/Bladeball15m.html'))()"
     },
 
     "Bee Swarm Simulator": {
-        "Name": "Bee Swarm Simulator",
+        "Name": "Bee Swarm Simulator (KEY SYSTEM)",
         "Src": "loadstring(game:HttpGet('https://raw.githubusercontent.com/3345-c-a-t-s-u-s/New-C4-Remote.lua/main/BeeSwarm.cpp'))"
     },
     "Bladeball": {
