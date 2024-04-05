@@ -23,6 +23,12 @@ if Id == 210851291 then
     return
 end
 
+if Id == 3647333358 then
+    -- Evade
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/3345-c-a-t-s-u-s/New-C4-Remote.lua/main/evade.r"))()
+    return
+end
+
 if Id == 2440500124 then
     -- DOORS
     loadstring(game:HttpGet("https://raw.githubusercontent.com/3345-c-a-t-s-u-s/New-C4-Remote.lua/main/Doors.c"))()
