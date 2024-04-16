@@ -277,7 +277,7 @@ return function()
 	description.Size = UDim2.new(0.899999976, 0, 0.500000119, 0)
 	description.ZIndex = 4
 	description.Font = Enum.Font.GothamBold
-	description.Text = "1. DO NOT DOWNLOAD ANYTHING WHEN YOU ARE GETTING A KEY\\n\\n2. if it say \"Failed to elapse required time, session invalidated!. Please Refresh this Page to go back to main Checkpoint\" refresh page"
+	description.Text = "1. DO NOT DOWNLOAD ANYTHING WHEN YOU ARE GETTING A KEY\n\n. if it say \"Failed to elapse required time, session invalidated!. Please Refresh this Page to go back to main Checkpoint\" refresh page"
 	description.TextColor3 = Color3.fromRGB(255, 255, 255)
 	description.TextScaled = true
 	description.TextSize = 14.000
