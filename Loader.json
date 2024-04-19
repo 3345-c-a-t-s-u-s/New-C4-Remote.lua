@@ -47,6 +47,11 @@ if Id == 3717264063 then
     return
 end
 
+if Id == 3808081382 then
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/3345-c-a-t-s-u-s/New-C4-Remote.lua/main/TSBG.jsx"))()
+    return
+end
+
 if Id == 1000233041 or Id == '2481103512' then
     -- SCP 3008
     loadstring(game:HttpGet("https://raw.githubusercontent.com/3345-c-a-t-s-u-s/New-C4-Remote.lua/main/SCP_3008.php"))()
