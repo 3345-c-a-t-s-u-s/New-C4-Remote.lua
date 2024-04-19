@@ -8,7 +8,10 @@
          "Name": "Blade Ball (BETA : KEY SYSTEM)",
          "Src": "loadstring(game:HttpGet('https://raw.githubusercontent.com/3345-c-a-t-s-u-s/New-C4-Remote.lua/main/BetaTest/Bladeball15m.html'))()"
     },
-
+    "The Strongest Battlegrounds": {
+        "Name": "The Strongest Battlegrounds",
+        "Src": "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/3345-c-a-t-s-u-s/New-C4-Remote.lua/main/TSBG.jsx\"))()"
+    },
     "Bee Swarm Simulator": {
         "Name": "Bee Swarm Simulator (KEY SYSTEM)",
         "Src": "loadstring(game:HttpGet('https://raw.githubusercontent.com/3345-c-a-t-s-u-s/New-C4-Remote.lua/main/BeeSwarm.cpp'))"
