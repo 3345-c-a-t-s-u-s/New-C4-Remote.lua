@@ -1,502 +1,456 @@
 gethui = gethui or function()
 	return game:FindFirstChild('CoreGui') or game.Players.LocalPlayer:WaitForChild("PlayerGui")
 end
+
+local Destroy = game.Destroy
 local TweenService = game:GetService('TweenService')
 
 return function(Title,Powered)
-	local tback = {
-		ActivateStatus = nil
+	local KeySystem = {
+		ActivateStatus = nil,
+		Request = false
 	}
-	local IsActivate = false
+	
 	local ScreenGui = Instance.new("ScreenGui")
 	local Frame = Instance.new("Frame")
-	local UICorner = Instance.new("UICorner")
-	local DropShadow = Instance.new("ImageLabel")
-	local Right = Instance.new("Frame")
-	local UICorner_2 = Instance.new("UICorner")
+	local Frame_2 = Instance.new("Frame")
 	local UIGradient = Instance.new("UIGradient")
-	local Left = Instance.new("Frame")
-	local UICorner_3 = Instance.new("UICorner")
+	local DropShadow = Instance.new("ImageLabel")
+	local HubTitle = Instance.new("TextLabel")
+	local Frame_3 = Instance.new("Frame")
 	local UIGradient_2 = Instance.new("UIGradient")
-	local Top = Instance.new("Frame")
-	local UICorner_4 = Instance.new("UICorner")
+	local Enter = Instance.new("Frame")
+	local UICorner = Instance.new("UICorner")
+	local DropShadow_2 = Instance.new("ImageLabel")
+	local TextBox = Instance.new("TextBox")
+	local Frame_4 = Instance.new("Frame")
 	local UIGradient_3 = Instance.new("UIGradient")
-	local Bottom = Instance.new("Frame")
-	local UICorner_5 = Instance.new("UICorner")
-	local UIGradient_4 = Instance.new("UIGradient")
-	local UIGradient_5 = Instance.new("UIGradient")
-	local ImageLabel = Instance.new("ImageLabel")
-	local ScriptHub = Instance.new("TextLabel")
-	local ScriptHub_2 = Instance.new("TextLabel")
-	local EnterKey = Instance.new("TextBox")
-	local UICorner_6 = Instance.new("UICorner")
-	local UIStroke = Instance.new("UIStroke")
-	local UIGradient_6 = Instance.new("UIGradient")
-	local Activate = Instance.new("TextButton")
-	local UICorner_7 = Instance.new("UICorner")
-	local UIStroke_2 = Instance.new("UIStroke")
-	local UIGradient_7 = Instance.new("UIGradient")
-	local GetKey = Instance.new("TextButton")
-	local UICorner_8 = Instance.new("UICorner")
-	local UIStroke_3 = Instance.new("UIStroke")
-	local UIGradient_8 = Instance.new("UIGradient")
-	local Loader = Instance.new("Frame")
-	local Log1 = Instance.new("Frame")
-	local UICorner_9 = Instance.new("UICorner")
-	local UIListLayout = Instance.new("UIListLayout")
-	local Log2 = Instance.new("Frame")
-	local UICorner_10 = Instance.new("UICorner")
-	local Log3 = Instance.new("Frame")
-	local UICorner_11 = Instance.new("UICorner")
+	local GetKey = Instance.new("Frame")
+	local UICorner_2 = Instance.new("UICorner")
+	local DropShadow_3 = Instance.new("ImageLabel")
+	local Button = Instance.new("TextButton")
+	local Activate = Instance.new("Frame")
+	local UICorner_3 = Instance.new("UICorner")
+	local DropShadow_4 = Instance.new("ImageLabel")
+	local Button_2 = Instance.new("TextButton")
+	local CR = Instance.new("TextLabel")
+	local Load = Instance.new("Frame")
+	local UICorner_4 = Instance.new("UICorner")
+	local LoadUI = Instance.new("UIGradient")
 
 	ScreenGui.Parent = gethui()
-	ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Global
-	ScreenGui.IgnoreGuiInset = true
 	ScreenGui.ResetOnSpawn = false
+	ScreenGui.IgnoreGuiInset = true
+	ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Global
 	
 	Frame.Parent = ScreenGui
 	Frame.AnchorPoint = Vector2.new(0.5, 0.5)
-	Frame.BackgroundColor3 = Color3.fromRGB(131, 61, 0)
+	Frame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 	Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	Frame.BorderSizePixel = 0
-	Frame.Position = UDim2.new(0.5, 0, -1.5, 0)
-	Frame.Size = UDim2.new(0.100000001, 325, 0.0500000007, 250)
-	TweenService:Create(Frame,TweenInfo.new(1),{Position = UDim2.new(0.5, 0, 0.5, 0)}):Play()
+	Frame.Position = UDim2.new(0.5, 0, 0.5, 0)
+	Frame.Size = UDim2.new(0.100000001, 240, 0.100000001, 140)
+	Frame.BackgroundTransparency = 1
+	TweenService:Create(Frame,TweenInfo.new(0.2),{Size = UDim2.new(0.100000001, 250, 0.100000001, 150),BackgroundTransparency = 0}):Play()
 	
-	UICorner.CornerRadius = UDim.new(0, 3)
-	UICorner.Parent = Frame
+	Frame_2.Parent = Frame
+	Frame_2.AnchorPoint = Vector2.new(0, 1)
+	Frame_2.BackgroundColor3 = Color3.fromRGB(0, 122, 204)
+	Frame_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Frame_2.BorderSizePixel = 0
+	Frame_2.Position = UDim2.new(0, 0, 1, 0)
+	Frame_2.Size = UDim2.new(1, 0, 0.0500000007, 0)
+	Frame_2.ZIndex = 2
+	Frame_2.BackgroundTransparency = 1
+	
+	TweenService:Create(Frame_2,TweenInfo.new(0.35),{BackgroundTransparency = 0}):Play()
+	UIGradient.Rotation = 90
+	UIGradient.Transparency = NumberSequence.new{NumberSequenceKeypoint.new(0.00, 1.00), NumberSequenceKeypoint.new(0.89, 1.00), NumberSequenceKeypoint.new(0.9, 0.00), NumberSequenceKeypoint.new(1.00, 0.00)}
+	UIGradient.Parent = Frame_2
 
 	DropShadow.Name = "DropShadow"
 	DropShadow.Parent = Frame
 	DropShadow.AnchorPoint = Vector2.new(0.5, 0.5)
 	DropShadow.BackgroundTransparency = 1.000
 	DropShadow.BorderSizePixel = 0
-	DropShadow.Position = UDim2.new(0.5, 0, 0.49655053, 0)
+	DropShadow.Position = UDim2.new(0.5, 0, 0.5, 0)
 	DropShadow.Size = UDim2.new(1, 47, 1, 47)
 	DropShadow.ZIndex = 0
-	DropShadow.Image = "rbxassetid://6015897843"
+	DropShadow.Image = "rbxassetid://6014261993"
 	DropShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
 	DropShadow.ImageTransparency = 0.500
 	DropShadow.ScaleType = Enum.ScaleType.Slice
 	DropShadow.SliceCenter = Rect.new(49, 49, 450, 450)
 
-	Right.Name = "Right"
-	Right.Parent = Frame
-	Right.AnchorPoint = Vector2.new(1, 0.5)
-	Right.BackgroundColor3 = Color3.fromRGB(255, 72, 0)
-	Right.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	Right.BorderSizePixel = 0
-	Right.Position = UDim2.new(1, 0, 0.5, 0)
-	Right.Size = UDim2.new(0.00499999989, 0, 1, 0)
+	TweenService:Create(DropShadow,TweenInfo.new(0.5),{ImageTransparency = 0.5}):Play()
+	
+	HubTitle.Name = "HubTitle"
+	HubTitle.Parent = Frame
+	HubTitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	HubTitle.BackgroundTransparency = 1.000
+	HubTitle.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	HubTitle.BorderSizePixel = 0
+	HubTitle.Position = UDim2.new(0.0274649821, 0, 0.0304612704, 0)
+	HubTitle.Size = UDim2.new(0.619719863, 0, 0.0695387498, 0)
+	HubTitle.Font = Enum.Font.GothamBold
+	HubTitle.Text = Title or "BEDOL HUB"
+	HubTitle.TextColor3 = Color3.fromRGB(255, 255, 255)
+	HubTitle.TextScaled = true
+	HubTitle.TextSize = 14.000
+	HubTitle.TextWrapped = true
+	HubTitle.TextXAlignment = Enum.TextXAlignment.Left
+	HubTitle.TextTransparency = 1
 
-	UICorner_2.CornerRadius = UDim.new(0.5, 0)
-	UICorner_2.Parent = Right
+	TweenService:Create(HubTitle,TweenInfo.new(0.4),{TextTransparency = 0}):Play()
 
-	UIGradient.Transparency = NumberSequence.new{NumberSequenceKeypoint.new(0.00, 1.00), NumberSequenceKeypoint.new(1.00, 0.00)}
-	UIGradient.Parent = Right
+	Frame_3.Parent = Frame
+	Frame_3.AnchorPoint = Vector2.new(0.5, 1)
+	Frame_3.BackgroundColor3 = Color3.fromRGB(0, 122, 204)
+	Frame_3.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Frame_3.BorderSizePixel = 0
+	Frame_3.Position = UDim2.new(0.5, 0, 0.147, 0)
+	Frame_3.Size = UDim2.new(1, 0, 0.0500000007, 0)
+	Frame_3.ZIndex = 2
+	Frame_3.BackgroundTransparency = 1
+	
+	TweenService:Create(Frame_3,TweenInfo.new(0.35),{BackgroundTransparency = 0}):Play()
+	UIGradient_2.Rotation = 90
+	UIGradient_2.Transparency = NumberSequence.new{NumberSequenceKeypoint.new(0.00, 1.00), NumberSequenceKeypoint.new(0.41, 1.00), NumberSequenceKeypoint.new(0.415, 0.00), NumberSequenceKeypoint.new(0.55, 0.00), NumberSequenceKeypoint.new(0.56, 1.00), NumberSequenceKeypoint.new(1.00, 1.00)}
+	UIGradient_2.Parent = Frame_3
 
-	Left.Name = "Left"
-	Left.Parent = Frame
-	Left.AnchorPoint = Vector2.new(0, 0.5)
-	Left.BackgroundColor3 = Color3.fromRGB(255, 72, 0)
-	Left.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	Left.BorderSizePixel = 0
-	Left.Position = UDim2.new(0, 0, 0.5, 0)
-	Left.Size = UDim2.new(0.00499999989, 0, 1, 0)
+	Enter.Name = "Enter"
+	Enter.Parent = Frame
+	Enter.AnchorPoint = Vector2.new(0.5, 0.5)
+	Enter.BackgroundColor3 = Color3.fromRGB(45, 45, 48)
+	Enter.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Enter.BorderSizePixel = 0
+	Enter.Position = UDim2.new(0.5, 0, 0.284999996, 0)
+	Enter.Size = UDim2.new(0.800000012, 0, 0.109999999, 0)
+	Enter.ZIndex = 3
 
-	UICorner_3.CornerRadius = UDim.new(0.5, 0)
-	UICorner_3.Parent = Left
+	UICorner.CornerRadius = UDim.new(0, 2)
+	UICorner.Parent = Enter
 
-	UIGradient_2.Transparency = NumberSequence.new{NumberSequenceKeypoint.new(0.00, 0.00), NumberSequenceKeypoint.new(1.00, 1.00)}
-	UIGradient_2.Parent = Left
+	DropShadow_2.Name = "DropShadow"
+	DropShadow_2.Parent = Enter
+	DropShadow_2.AnchorPoint = Vector2.new(0.5, 0.5)
+	DropShadow_2.BackgroundColor3 = Color3.fromRGB(0, 122, 204)
+	DropShadow_2.BackgroundTransparency = 1.000
+	DropShadow_2.BorderSizePixel = 0
+	DropShadow_2.Position = UDim2.new(0.5, 0, 0.5, 0)
+	DropShadow_2.Size = UDim2.new(1, 34, 1, 34)
+	DropShadow_2.ZIndex = 2
+	DropShadow_2.Image = "rbxassetid://6014261993"
+	DropShadow_2.ImageColor3 = Color3.fromRGB(0, 0, 0)
+	DropShadow_2.ImageTransparency = 0.500
+	DropShadow_2.ScaleType = Enum.ScaleType.Slice
+	DropShadow_2.SliceCenter = Rect.new(49, 49, 450, 450)
+	DropShadow_2.ImageTransparency = 1
+	
+	TweenService:Create(DropShadow_2,TweenInfo.new(0.5),{ImageTransparency = 0.5}):Play()
 
-	Top.Name = "Top"
-	Top.Parent = Frame
-	Top.BackgroundColor3 = Color3.fromRGB(255, 72, 0)
-	Top.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	Top.BorderSizePixel = 0
-	Top.Size = UDim2.new(1, 0, 0.00999999978, 0)
+	TextBox.Parent = Enter
+	TextBox.AnchorPoint = Vector2.new(0.5, 0.5)
+	TextBox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	TextBox.BackgroundTransparency = 1.000
+	TextBox.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	TextBox.BorderSizePixel = 0
+	TextBox.Position = UDim2.new(0.5, 0, 0.5, 0)
+	TextBox.Size = UDim2.new(0.949999988, 0, 0.699999988, 0)
+	TextBox.ZIndex = 4
+	TextBox.ClearTextOnFocus = false
+	TextBox.Font = Enum.Font.SourceSansBold
+	TextBox.PlaceholderColor3 = Color3.fromRGB(62, 62, 66)
+	TextBox.PlaceholderText = "Enter"
+	TextBox.Text = ""
+	TextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+	TextBox.TextScaled = true
+	TextBox.TextSize = 14.000
+	TextBox.TextWrapped = true
+	TextBox.TextTransparency = 1
 
-	UICorner_4.CornerRadius = UDim.new(0.5, 0)
-	UICorner_4.Parent = Top
+	TweenService:Create(TextBox,TweenInfo.new(0.4),{TextTransparency = 0.120}):Play()
 
-	UIGradient_3.Rotation = 90
-	UIGradient_3.Transparency = NumberSequence.new{NumberSequenceKeypoint.new(0.00, 0.00), NumberSequenceKeypoint.new(1.00, 1.00)}
-	UIGradient_3.Parent = Top
-
-	Bottom.Name = "Bottom"
-	Bottom.Parent = Frame
-	Bottom.AnchorPoint = Vector2.new(0, 1)
-	Bottom.BackgroundColor3 = Color3.fromRGB(255, 72, 0)
-	Bottom.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	Bottom.BorderSizePixel = 0
-	Bottom.Position = UDim2.new(0, 0, 1, 0)
-	Bottom.Size = UDim2.new(1, 0, 0.00999999978, 0)
-
-	UICorner_5.CornerRadius = UDim.new(0.5, 0)
-	UICorner_5.Parent = Bottom
-
-	UIGradient_4.Rotation = -90
-	UIGradient_4.Transparency = NumberSequence.new{NumberSequenceKeypoint.new(0.00, 0.00), NumberSequenceKeypoint.new(1.00, 1.00)}
-	UIGradient_4.Parent = Bottom
-
-	UIGradient_5.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(68, 68, 68)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(255, 255, 255))}
-	UIGradient_5.Rotation = -93
-	UIGradient_5.Parent = Frame
-
-	ImageLabel.Parent = Frame
-	ImageLabel.AnchorPoint = Vector2.new(0.5, 0.5)
-	ImageLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	ImageLabel.BackgroundTransparency = 1.000
-	ImageLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	ImageLabel.BorderSizePixel = 0
-	ImageLabel.Position = UDim2.new(0.964999974, 0, 0.0500000007, 0)
-	ImageLabel.Size = UDim2.new(0.0500000007, 0, 0.0500000007, 0)
-	ImageLabel.SizeConstraint = Enum.SizeConstraint.RelativeYY
-	ImageLabel.Image = "rbxassetid://7743878857"
-
-	ScriptHub.Name = "ScriptHub"
-	ScriptHub.Parent = Frame
-	ScriptHub.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	ScriptHub.BackgroundTransparency = 1.000
-	ScriptHub.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	ScriptHub.BorderSizePixel = 0
-	ScriptHub.Position = UDim2.new(0.0203896686, 0, 0.0241462048, 0)
-	ScriptHub.Size = UDim2.new(0.50000006, 0, 0.0853484944, 0)
-	ScriptHub.Font = Enum.Font.GothamBold
-	ScriptHub.RichText = true
-	ScriptHub.Text = Title or "BEDOL <font color=\"rgb(255, 64, 0)\">HUB</font>"
-	ScriptHub.TextColor3 = Color3.fromRGB(255, 255, 255)
-	ScriptHub.TextScaled = true
-	ScriptHub.TextSize = 14.000
-	ScriptHub.TextWrapped = true
-	ScriptHub.TextXAlignment = Enum.TextXAlignment.Left
-
-	ScriptHub_2.Name = "ScriptHub"
-	ScriptHub_2.Parent = Frame
-	ScriptHub_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	ScriptHub_2.BackgroundTransparency = 1.000
-	ScriptHub_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	ScriptHub_2.BorderSizePixel = 0
-	ScriptHub_2.Position = UDim2.new(0.649999976, 0, 0.954999983, 0)
-	ScriptHub_2.Size = UDim2.new(0.341413736, 0, 0.0267076455, 0)
-	ScriptHub_2.Font = Enum.Font.GothamBold
-	ScriptHub_2.Text = Powered or "Powered By Panda"
-	ScriptHub_2.TextColor3 = Color3.fromRGB(255, 255, 255)
-	ScriptHub_2.TextScaled = true
-	ScriptHub_2.TextSize = 14.000
-	ScriptHub_2.TextWrapped = true
-	ScriptHub_2.TextXAlignment = Enum.TextXAlignment.Right
-
-	EnterKey.Name = "EnterKey"
-	EnterKey.Parent = Frame
-	EnterKey.AnchorPoint = Vector2.new(0.5, 0.5)
-	EnterKey.BackgroundColor3 = Color3.fromRGB(45, 0, 1)
-	EnterKey.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	EnterKey.BorderSizePixel = 0
-	EnterKey.Position = UDim2.new(0.5, 0, 0.300000012, 0)
-	EnterKey.Size = UDim2.new(0.699999988, 0, 0.100000001, 0)
-	EnterKey.Font = Enum.Font.GothamBold
-	EnterKey.PlaceholderColor3 = Color3.fromRGB(107, 107, 107)
-	EnterKey.PlaceholderText = "Enter Key"
-	EnterKey.Text = ""
-	EnterKey.TextColor3 = Color3.fromRGB(255, 255, 255)
-	EnterKey.TextSize = 14.000
-	EnterKey.TextWrapped = true
-
-	UICorner_6.CornerRadius = UDim.new(0, 3)
-	UICorner_6.Parent = EnterKey
-
-	UIStroke.Color = Color3.fromRGB(255, 72, 0)
-	UIStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-	UIStroke.Parent = EnterKey
-
-	UIGradient_6.Transparency = NumberSequence.new{NumberSequenceKeypoint.new(0.00, 0.00), NumberSequenceKeypoint.new(0.20, 1.00), NumberSequenceKeypoint.new(0.50, 1.00), NumberSequenceKeypoint.new(0.80, 1.00), NumberSequenceKeypoint.new(1.00, 0.00)}
-	UIGradient_6.Parent = UIStroke
-
-	Activate.Name = "Activate"
-	Activate.Parent = Frame
-	Activate.AnchorPoint = Vector2.new(0.5, 0.5)
-	Activate.BackgroundColor3 = Color3.fromRGB(113, 17, 0)
-	Activate.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	Activate.BorderSizePixel = 0
-	Activate.Position = UDim2.new(0.498414129, 0, 0.496722966, 0)
-	Activate.Size = UDim2.new(0.5, 0, 0.100000001, 0)
-	Activate.Font = Enum.Font.GothamBold
-	Activate.Text = "Activate"
-	Activate.TextColor3 = Color3.fromRGB(255, 255, 255)
-	Activate.TextSize = 14.000
-
-	UICorner_7.CornerRadius = UDim.new(0, 3)
-	UICorner_7.Parent = Activate
-
-	UIStroke_2.Color = Color3.fromRGB(255, 72, 0)
-	UIStroke_2.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-	UIStroke_2.Parent = Activate
-
-	UIGradient_7.Transparency = NumberSequence.new{NumberSequenceKeypoint.new(0.00, 0.00), NumberSequenceKeypoint.new(0.20, 1.00), NumberSequenceKeypoint.new(0.50, 1.00), NumberSequenceKeypoint.new(0.80, 1.00), NumberSequenceKeypoint.new(1.00, 0.00)}
-	UIGradient_7.Parent = UIStroke_2
+	TextBox.FocusLost:Connect(function()
+		TweenService:Create(DropShadow_2,TweenInfo.new(0.1),{
+			ImageColor3 = Color3.fromRGB(0, 0, 0)
+		}):Play()
+	end)
+	
+	TextBox.Focused:Connect(function()
+		TweenService:Create(DropShadow_2,TweenInfo.new(0.1),{
+			ImageColor3 = Color3.fromRGB(0, 153, 255)
+		}):Play()
+	end)
+	
+	Frame_4.Parent = Enter
+	Frame_4.BackgroundColor3 = Color3.fromRGB(0, 122, 204)
+	Frame_4.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Frame_4.BorderSizePixel = 0
+	Frame_4.Size = UDim2.new(0.0500000007, 0, 1, 0)
+	Frame_4.ZIndex = 6
+	Frame_4.BackgroundTransparency = 1
+	TweenService:Create(Frame_4,TweenInfo.new(0.35),{BackgroundTransparency = 0}):Play()
+	
+	UIGradient_3.Transparency = NumberSequence.new{NumberSequenceKeypoint.new(0.00, 0.00), NumberSequenceKeypoint.new(0.18, 0.00), NumberSequenceKeypoint.new(0.19, 1.00), NumberSequenceKeypoint.new(1.00, 1.00)}
+	UIGradient_3.Parent = Frame_4
 
 	GetKey.Name = "GetKey"
 	GetKey.Parent = Frame
 	GetKey.AnchorPoint = Vector2.new(0.5, 0.5)
-	GetKey.BackgroundColor3 = Color3.fromRGB(113, 17, 0)
+	GetKey.BackgroundColor3 = Color3.fromRGB(37, 37, 38)
 	GetKey.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	GetKey.BorderSizePixel = 0
-	GetKey.Position = UDim2.new(0.498414129, 0, 0.645049989, 0)
-	GetKey.Size = UDim2.new(0.5, 0, 0.100000001, 0)
-	GetKey.Font = Enum.Font.GothamBold
-	GetKey.Text = "Get Key"
-	GetKey.TextColor3 = Color3.fromRGB(255, 255, 255)
-	GetKey.TextSize = 14.000
+	GetKey.Position = UDim2.new(0.25, 0, 0.600000024, 0)
+	GetKey.Size = UDim2.new(0.300000012, 0, 0.125, 0)
+	GetKey.ZIndex = 4
 
-	UICorner_8.CornerRadius = UDim.new(0, 3)
-	UICorner_8.Parent = GetKey
+	UICorner_2.CornerRadius = UDim.new(0, 2)
+	UICorner_2.Parent = GetKey
 
-	UIStroke_3.Color = Color3.fromRGB(255, 72, 0)
-	UIStroke_3.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-	UIStroke_3.Parent = GetKey
+	DropShadow_3.Name = "DropShadow"
+	DropShadow_3.Parent = GetKey
+	DropShadow_3.AnchorPoint = Vector2.new(0.5, 0.5)
+	DropShadow_3.BackgroundColor3 = Color3.fromRGB(0, 122, 204)
+	DropShadow_3.BackgroundTransparency = 1.000
+	DropShadow_3.BorderSizePixel = 0
+	DropShadow_3.Position = UDim2.new(0.5, 0, 0.5, 0)
+	DropShadow_3.Size = UDim2.new(1, 34, 1, 34)
+	DropShadow_3.ZIndex = 2
+	DropShadow_3.Image = "rbxassetid://6014261993"
+	DropShadow_3.ImageColor3 = Color3.fromRGB(0, 0, 0)
+	DropShadow_3.ImageTransparency = 0.500
+	DropShadow_3.ScaleType = Enum.ScaleType.Slice
+	DropShadow_3.SliceCenter = Rect.new(49, 49, 450, 450)
+	DropShadow_3.ImageTransparency = 1
+	TweenService:Create(DropShadow_3,TweenInfo.new(0.5),{ImageTransparency = 0.5}):Play()
 
-	UIGradient_8.Transparency = NumberSequence.new{NumberSequenceKeypoint.new(0.00, 0.00), NumberSequenceKeypoint.new(0.20, 1.00), NumberSequenceKeypoint.new(0.50, 1.00), NumberSequenceKeypoint.new(0.80, 1.00), NumberSequenceKeypoint.new(1.00, 0.00)}
-	UIGradient_8.Parent = UIStroke_3
+	Button.Name = "Button"
+	Button.Parent = GetKey
+	Button.AnchorPoint = Vector2.new(0.5, 0.5)
+	Button.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Button.BackgroundTransparency = 1.000
+	Button.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Button.BorderSizePixel = 0
+	Button.Position = UDim2.new(0.5, 0, 0.5, 0)
+	Button.Size = UDim2.new(0.899999976, 0, 0.550000012, 0)
+	Button.ZIndex = 6
+	Button.Font = Enum.Font.GothamBold
+	Button.Text = "GET KEY"
+	Button.TextColor3 = Color3.fromRGB(255, 255, 255)
+	Button.TextScaled = true
+	Button.TextSize = 14.000
+	Button.TextWrapped = true
+	Button.TextTransparency = 1
 
-	Loader.Name = "Loader"
-	Loader.Parent = Frame
-	Loader.AnchorPoint = Vector2.new(0.5, 0.5)
-	Loader.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Loader.BackgroundTransparency = 1.000
-	Loader.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	Loader.BorderSizePixel = 0
-	Loader.Position = UDim2.new(0.5, 0, 0.400000006, 0)
-	Loader.Size = UDim2.new(0.699999988, 0, 0.0500000007, 0)
+	TweenService:Create(Button,TweenInfo.new(0.4),{TextTransparency = 0}):Play()
 
-	Log1.Name = "Log1"
-	Log1.Parent = Loader
-	Log1.BackgroundColor3 = Color3.fromRGB(158, 158, 158)
-	Log1.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	Log1.BorderSizePixel = 0
-	Log1.SizeConstraint = Enum.SizeConstraint.RelativeYY
+	Button.MouseButton1Down:Connect(function()
+		TweenService:Create(DropShadow_3,TweenInfo.new(0.2),{
+			ImageColor3 = Color3.fromRGB(0, 153, 255)
+		}):Play()
+	end)
 
-	UICorner_9.CornerRadius = UDim.new(0, 3)
-	UICorner_9.Parent = Log1
-
-	UIListLayout.Parent = Loader
-	UIListLayout.FillDirection = Enum.FillDirection.Horizontal
-	UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
-	UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-	UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Center
-	UIListLayout.Padding = UDim.new(0, 15)
-
-	Log2.Name = "Log2"
-	Log2.Parent = Loader
-	Log2.BackgroundColor3 = Color3.fromRGB(158, 158, 158)
-	Log2.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	Log2.BorderSizePixel = 0
-	Log2.SizeConstraint = Enum.SizeConstraint.RelativeYY
-
-	UICorner_10.CornerRadius = UDim.new(0, 3)
-	UICorner_10.Parent = Log2
-
-	Log3.Name = "Log3"
-	Log3.Parent = Loader
-	Log3.BackgroundColor3 = Color3.fromRGB(158, 158, 158)
-	Log3.BorderColor3 = Color3.fromRGB(0, 0, 0)
-	Log3.BorderSizePixel = 0
-	Log3.SizeConstraint = Enum.SizeConstraint.RelativeYY
-
-	UICorner_11.CornerRadius = UDim.new(0, 3)
-	UICorner_11.Parent = Log3
+	Button.MouseButton1Up:Connect(function()
+		TweenService:Create(DropShadow_3,TweenInfo.new(0.2),{
+			ImageColor3 = Color3.fromRGB(0,0,0)
+		}):Play()
+	end)
 	
-	function tback:GetKey(func)
-		GetKey.MouseButton1Click:Connect(func)
-	end
+	Activate.Name = "Activate"
+	Activate.Parent = Frame
+	Activate.AnchorPoint = Vector2.new(0.5, 0.5)
+	Activate.BackgroundColor3 = Color3.fromRGB(37, 37, 38)
+	Activate.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Activate.BorderSizePixel = 0
+	Activate.Position = UDim2.new(0.75, 0, 0.600000024, 0)
+	Activate.Size = UDim2.new(0.300000012, 0, 0.125, 0)
+	Activate.ZIndex = 4
+
+	UICorner_3.CornerRadius = UDim.new(0, 2)
+	UICorner_3.Parent = Activate
+
+	DropShadow_4.Name = "DropShadow"
+	DropShadow_4.Parent = Activate
+	DropShadow_4.AnchorPoint = Vector2.new(0.5, 0.5)
+	DropShadow_4.BackgroundColor3 = Color3.fromRGB(0, 122, 204)
+	DropShadow_4.BackgroundTransparency = 1.000
+	DropShadow_4.BorderSizePixel = 0
+	DropShadow_4.Position = UDim2.new(0.5, 0, 0.5, 0)
+	DropShadow_4.Size = UDim2.new(1, 34, 1, 34)
+	DropShadow_4.ZIndex = 2
+	DropShadow_4.Image = "rbxassetid://6014261993"
+	DropShadow_4.ImageColor3 = Color3.fromRGB(0, 0, 0)
+	DropShadow_4.ImageTransparency = 0.500
+	DropShadow_4.ScaleType = Enum.ScaleType.Slice
+	DropShadow_4.SliceCenter = Rect.new(49, 49, 450, 450)
+	DropShadow_4.ImageTransparency = 1
 	
-	function tback:Delete()
-		local vc = TweenService:Create(Frame,TweenInfo.new(1),{Position = UDim2.new(0.5, 0, 1.5, 0)})
-		vc:Play()
-		vc.Completed:Connect(function()ScreenGui:Destroy()end)
-	end
+	TweenService:Create(DropShadow_4,TweenInfo.new(0.5),{ImageTransparency = 0.5}):Play()
+
+	Button_2.Name = "Button"
+	Button_2.Parent = Activate
+	Button_2.AnchorPoint = Vector2.new(0.5, 0.5)
+	Button_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Button_2.BackgroundTransparency = 1.000
+	Button_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Button_2.BorderSizePixel = 0
+	Button_2.Position = UDim2.new(0.5, 0, 0.5, 0)
+	Button_2.Size = UDim2.new(0.899999976, 0, 0.550000012, 0)
+	Button_2.ZIndex = 6
+	Button_2.Font = Enum.Font.GothamBold
+	Button_2.Text = "ACTIVATE"
+	Button_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+	Button_2.TextScaled = true
+	Button_2.TextSize = 14.000
+	Button_2.TextWrapped = true
+	Button_2.TextTransparency = 1
+	
+	TweenService:Create(Button_2,TweenInfo.new(0.4),{TextTransparency = 0}):Play()
 	
 	
-	function tback:Activate(func)
+	Button_2.MouseButton1Down:Connect(function()
+		TweenService:Create(DropShadow_4,TweenInfo.new(0.2),{
+			ImageColor3 = Color3.fromRGB(0, 153, 255)
+		}):Play()
+	end)
+
+	Button_2.MouseButton1Up:Connect(function()
+		TweenService:Create(DropShadow_4,TweenInfo.new(0.2),{
+			ImageColor3 = Color3.fromRGB(0,0,0)
+		}):Play()
+	end)
+	
+	CR.Name = "CR"
+	CR.Parent = Frame
+	CR.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	CR.BackgroundTransparency = 1.000
+	CR.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	CR.BorderSizePixel = 0
+	CR.Position = UDim2.new(0.0270000007, 0, 0.949999988, 0)
+	CR.Size = UDim2.new(0.619719863, 0, 0.0390774943, 0)
+	CR.Font = Enum.Font.GothamBold
+	CR.Text = Powered or "Powered By PandaAuth"
+	CR.TextColor3 = Color3.fromRGB(255, 255, 255)
+	CR.TextScaled = true
+	CR.TextSize = 14.000
+	CR.TextTransparency = 0.500
+	CR.TextWrapped = true
+	CR.TextXAlignment = Enum.TextXAlignment.Left
+	CR.TextTransparency = 1
+
+	TweenService:Create(CR,TweenInfo.new(0.4),{TextTransparency = 0.5}):Play()
+
+	Load.Name = "Load"
+	Load.Parent = Frame
+	Load.AnchorPoint = Vector2.new(0.5, 0.5)
+	Load.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Load.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Load.BorderSizePixel = 0
+	Load.Position = UDim2.new(0.5, 0, 0.435000002, 0)
+	Load.Size = UDim2.new(0.800000012, 0, 0.100000001, 0)
+	
+	UICorner_4.CornerRadius = UDim.new(0, 2)
+	UICorner_4.Parent = Load
+
+	LoadUI.Offset = Vector2.new(-0.699999988, 0)
+	LoadUI.Transparency = NumberSequence.new{NumberSequenceKeypoint.new(0.00, 1.00), NumberSequenceKeypoint.new(0.40, 1.00), NumberSequenceKeypoint.new(0.41, 0.00), NumberSequenceKeypoint.new(0.60, 0.00), NumberSequenceKeypoint.new(0.61, 1.00), NumberSequenceKeypoint.new(1.00, 1.00)}
+	LoadUI.Name = "LoadUI"
+	LoadUI.Parent = Load
+	
+	local function HideUI(speed)
 		
-		Activate.MouseButton1Click:Connect(function()
-			if string.len(EnterKey.Text) <= 0 or tback.ActivateStatus == "Success" then
-				
-				return
-			end
+		for i,v in ipairs(ScreenGui:GetDescendants()) do task.wait()
+			pcall(function()
+				TweenService:Create(v,TweenInfo.new(speed),{
+					TextTransparency = 1,
+					BackgroundTransparency = 1,
+					TextStrokeTransparency = 1
+				}):Play()
+			end)
 			
-			IsActivate = true
+			pcall(function()
+				TweenService:Create(v,TweenInfo.new(speed),{
+					BackgroundTransparency = 1,
+					ImageTransparency = 1
+				}):Play()
+			end)
 			
-			if func(EnterKey.Text) then
-				IsActivate = false
-				
-				tback.ActivateStatus = "Success"
-				
-				task.wait(3)
-				
-				task.cancel(tback.Task)
-				tback:Delete()
-				return
-			else
-				tback.ActivateStatus = "Failed"
-				
-				task.delay(1,function()
-					if IsActivate == false then
-						tback.ActivateStatus = nil
-					end
-				end)
-			end
+			pcall(function()
+				TweenService:Create(v,TweenInfo.new(speed),{
+					BackgroundTransparency = 1,
+					ImageTransparency = 1
+				}):Play()
+			end)
 			
-			
-			IsActivate = false
+			pcall(function()
+				TweenService:Create(v,TweenInfo.new(speed),{
+					BackgroundTransparency = 1,
+				}):Play()
+			end)
+		end
+	end
+	
+	function KeySystem:GetKey(func)
+		Button.MouseButton1Click:Connect(func)
+	end
+
+	function KeySystem:Delete()
+		TweenService:Create(Frame,TweenInfo.new(0.255),{Size = UDim2.new(0.100000001, 230, 0.100000001, 130)}):Play()
+		HideUI(0.25)
+		
+		task.delay(1.5,function()
+			Destroy(ScreenGui)
 		end)
 	end
-	
-	tback.Task = task.spawn(function()
-		local atlog = Log1
-		local atdelay = false
-		local debugs = false
+
+
+	function KeySystem:Activate(func)
+		Button_2.MouseButton1Click:Connect(function()
+			if KeySystem.Request then
+				return
+			else
+				KeySystem.Request = true
+			end
+			
+			
+			if func(TextBox.Text) then
+				
+				KeySystem.Request = false
+				
+				task.cancel(KeySystem.Task)
+				
+				KeySystem:Delete()
+				return true
+			end
+			
+			TextBox.Text = ''
+			
+			KeySystem.Request = false
+		end)
+	end
+
+	KeySystem.Task = task.spawn(function()
+		local LoopedTask = tick()
+		local loadtime = 1
 		
 		while true do task.wait()
-			if IsActivate then
-				if debugs then
-					debugs = false
-					TweenService:Create(Log1,TweenInfo.new(0.4,Enum.EasingStyle.Back),{
-						Size = UDim2.fromScale(0.8,0.8),
-						BackgroundColor3 = Color3.fromRGB(158, 158, 158)
-					}):Play()
-					TweenService:Create(Log2,TweenInfo.new(0.4,Enum.EasingStyle.Back),{
-						Size = UDim2.fromScale(0.8,0.8),
-						BackgroundColor3 = Color3.fromRGB(158, 158, 158)
-					}):Play()
-					TweenService:Create(Log3,TweenInfo.new(0.4,Enum.EasingStyle.Back),{
-						Size = UDim2.fromScale(0.8,0.8),
-						BackgroundColor3 = Color3.fromRGB(158, 158, 158)
-					}):Play()
+			if KeySystem.Request then
+				if tick() > LoopedTask then
+					LoopedTask = tick() + loadtime
+					LoadUI.Offset = Vector2.new(-0.699999988, 0)
 					
-					atlog = Log1
+					TweenService:Create(LoadUI,TweenInfo.new(loadtime,Enum.EasingStyle.Linear),{
+						Offset = Vector2.new(0.6, 0)
+					}):Play()
 				end
-				
-				if atlog then
-					if not atdelay then
-						atdelay = true
-						
-						local myc = atlog
-						TweenService:Create(myc,TweenInfo.new(1,Enum.EasingStyle.Back),{
-							Size = UDim2.fromScale(1.25,1.5),
-							BackgroundColor3 = Color3.fromRGB(202, 202, 202)
-						}):Play()
-						
-						task.delay(0.8,function()
-							TweenService:Create(myc,TweenInfo.new(0.45),{
-								Size = UDim2.fromScale(0.8,0.8),
-								BackgroundColor3 = Color3.fromRGB(158, 158, 158)
-							}):Play()
-						end)
-						
-						task.delay(0.5,function()
-							if atlog == Log1 then
-								atlog = Log2
-							elseif atlog == Log2 then
-								atlog = Log3
-							elseif atlog == Log3 then
-								atlog = Log1
-								task.wait(0.4)
-							end
-							
-							atdelay = false
-						end)
-					end
-				end
-				
-				TweenService:Create(Activate,TweenInfo.new(0.4),{
-					Position = UDim2.new(0.498, 0,0.6, 0)
-				}):Play()
-
-				TweenService:Create(GetKey,TweenInfo.new(0.4),{
-					Position = UDim2.new(0.503, 0,0.759, 0)
-				}):Play()
-
-				TweenService:Create(Loader,TweenInfo.new(0.4),{
-					Position = UDim2.new(0.5, 0,0.448, 0)
-				}):Play()
-				
 			else
-				
-				debugs = true
-				
-				if not tback.ActivateStatus then
-					TweenService:Create(Log1,TweenInfo.new(.4),{
-						Size = UDim2.fromScale(0,0),
-						BackgroundColor3 = Color3.fromRGB(158, 158, 158)
-					}):Play()
-					TweenService:Create(Log2,TweenInfo.new(.4),{
-						Size = UDim2.fromScale(0,0),
-						BackgroundColor3 = Color3.fromRGB(158, 158, 158)
-					}):Play()
-					TweenService:Create(Log3,TweenInfo.new(0.4),{
-						Size = UDim2.fromScale(0,0),
-						BackgroundColor3 = Color3.fromRGB(158, 158, 158)
-					}):Play()
-
-					TweenService:Create(Activate,TweenInfo.new(0.4),{
-						Position = UDim2.new(0.498414129, 0, 0.496722966, 0)
-					}):Play()
-
-					TweenService:Create(GetKey,TweenInfo.new(0.4),{
-						Position = UDim2.new(0.498414129, 0, 0.645049989, 0)
-					}):Play()
-
-					TweenService:Create(Loader,TweenInfo.new(0.4),{
-						Position = UDim2.new(0.5, 0, 0.400000006, 0)
-					}):Play()
-				else
-					
-					TweenService:Create(Activate,TweenInfo.new(0.4),{
-						Position = UDim2.new(0.498, 0,0.6, 0)
-					}):Play()
-
-					TweenService:Create(GetKey,TweenInfo.new(0.4),{
-						Position = UDim2.new(0.503, 0,0.759, 0)
-					}):Play()
-
-					TweenService:Create(Loader,TweenInfo.new(0.4),{
-						Position = UDim2.new(0.5, 0,0.448, 0)
-					}):Play()
-					
-					if tback.ActivateStatus == "Success" then
-						TweenService:Create(Log1,TweenInfo.new(.4),{
-							Size = UDim2.fromScale(1,1),
-							BackgroundColor3 = Color3.fromRGB(43, 214, 0)
-						}):Play()
-						TweenService:Create(Log2,TweenInfo.new(.4),{
-							Size = UDim2.fromScale(1,1),
-							BackgroundColor3 = Color3.fromRGB(43, 214, 0)
-						}):Play()
-						TweenService:Create(Log3,TweenInfo.new(0.4),{
-							Size = UDim2.fromScale(1,1),
-							BackgroundColor3 = Color3.fromRGB(43, 214, 0)
-						}):Play()
-					elseif tback.ActivateStatus == "Failed"  then
-						
-						TweenService:Create(Log1,TweenInfo.new(.4),{
-							Size = UDim2.fromScale(1,1),
-							BackgroundColor3 = Color3.fromRGB(214, 0, 4)
-						}):Play()
-						TweenService:Create(Log2,TweenInfo.new(.4),{
-							Size = UDim2.fromScale(1,1),
-							BackgroundColor3 = Color3.fromRGB(214, 0, 4)
-						}):Play()
-						TweenService:Create(Log3,TweenInfo.new(0.4),{
-							Size = UDim2.fromScale(1,1),
-							BackgroundColor3 = Color3.fromRGB(214, 0, 4)
-						}):Play()
-					end
-				end
+				TweenService:Create(LoadUI,TweenInfo.new(0.1),{
+					Offset = Vector2.new(-0.699999988, 0)
+				}):Play()
 			end
 		end
 	end)
-	
-	return tback
+
+	return KeySystem
 end
