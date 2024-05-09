@@ -5,7 +5,7 @@
     },
 
     "BladeBallBETA": {
-         "Name": "Blade Ball (BETA : KEY SYSTEM)",
+         "Name": "Blade Ball",
          "Src": "loadstring(game:HttpGet('https://raw.githubusercontent.com/3345-c-a-t-s-u-s/New-C4-Remote.lua/main/BetaTest/Bladeball15m.html'))()"
     },
     "The Strongest Battlegrounds": {
@@ -13,13 +13,18 @@
         "Src": "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/3345-c-a-t-s-u-s/New-C4-Remote.lua/main/TSBG.jsx\"))()"
     },
     "Bee Swarm Simulator": {
-        "Name": "Bee Swarm Simulator (KEY SYSTEM)",
+        "Name": "Bee Swarm Simulator",
         "Src": "loadstring(game:HttpGet('https://raw.githubusercontent.com/3345-c-a-t-s-u-s/New-C4-Remote.lua/main/BeeSwarm.cpp'))"
     },
     "Bladeball": {
         "Name": "Blade Ball",
         "Src": "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/nqxlOfc/Loaders/main/Blade_Ball.lua\"))()"
     },
+    "Bladeball dg": {
+        "Name": "Blade Ball (Dungeons)",
+        "Src": "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/nqxlOfc/Loaders/main/Dungeons.lua\"))()"
+    },
+    
     "Build A Boat For Treasure": {
         "Name": "Build A Boat For Treasure",
         "Src": "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/3345-c-a-t-s-u-s/New-C4-Remote.lua/main/BuildABoat.py\"))()"
