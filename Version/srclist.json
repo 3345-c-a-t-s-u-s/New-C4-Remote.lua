@@ -8,6 +8,10 @@
          "Name": "Blade Ball",
          "Src": "loadstring(game:HttpGet('https://raw.githubusercontent.com/3345-c-a-t-s-u-s/New-C4-Remote.lua/main/BetaTest/Bladeball15m.html'))()"
     },
+    "PhantomForces": {
+        "Name": "Phantom Forces 🟩",
+        "Src": "loadstring(game.HttpGet(game,`https://raw.githubusercontent.com/3345-c-a-t-s-u-s/New-C4-Remote.lua/main/Ghost-Forces.c`))(0)"
+   },
     "The Strongest Battlegrounds": {
         "Name": "The Strongest Battlegrounds",
         "Src": "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/3345-c-a-t-s-u-s/New-C4-Remote.lua/main/TSBG.jsx\"))()"
