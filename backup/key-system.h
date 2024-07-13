@@ -10,7 +10,7 @@ return function(Title,Powered)
 		ActivateStatus = nil,
 		Request = false
 	}
-	
+
 	local ScreenGui = Instance.new("ScreenGui")
 	local Frame = Instance.new("Frame")
 	local Frame_2 = Instance.new("Frame")
@@ -42,7 +42,7 @@ return function(Title,Powered)
 	ScreenGui.ResetOnSpawn = false
 	ScreenGui.IgnoreGuiInset = true
 	ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Global
-	
+
 	Frame.Parent = ScreenGui
 	Frame.AnchorPoint = Vector2.new(0.5, 0.5)
 	Frame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
@@ -53,6 +53,10 @@ return function(Title,Powered)
 	Frame.BackgroundTransparency = 1
 	TweenService:Create(Frame,TweenInfo.new(0.2),{Size = UDim2.new(0.100000001, 250, 0.100000001, 150),BackgroundTransparency = 0}):Play()
 	
+	local GUICorner = Instance.new("UICorner",Frame)
+	GUICorner.CornerRadius = UDim.new(0.5,0)
+	TweenService:Create(GUICorner,TweenInfo.new(1,Enum.EasingStyle.Back,Enum.EasingDirection.Out),{CornerRadius = UDim.new(0,3)}):Play()
+	
 	Frame_2.Parent = Frame
 	Frame_2.AnchorPoint = Vector2.new(0, 1)
 	Frame_2.BackgroundColor3 = Color3.fromRGB(0, 122, 204)
@@ -62,7 +66,7 @@ return function(Title,Powered)
 	Frame_2.Size = UDim2.new(1, 0, 0.0500000007, 0)
 	Frame_2.ZIndex = 2
 	Frame_2.BackgroundTransparency = 1
-	
+
 	TweenService:Create(Frame_2,TweenInfo.new(0.35),{BackgroundTransparency = 0}):Play()
 	UIGradient.Rotation = 90
 	UIGradient.Transparency = NumberSequence.new{NumberSequenceKeypoint.new(0.00, 1.00), NumberSequenceKeypoint.new(0.89, 1.00), NumberSequenceKeypoint.new(0.9, 0.00), NumberSequenceKeypoint.new(1.00, 0.00)}
@@ -83,7 +87,7 @@ return function(Title,Powered)
 	DropShadow.SliceCenter = Rect.new(49, 49, 450, 450)
 
 	TweenService:Create(DropShadow,TweenInfo.new(0.5),{ImageTransparency = 0.5}):Play()
-	
+
 	HubTitle.Name = "HubTitle"
 	HubTitle.Parent = Frame
 	HubTitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -112,7 +116,7 @@ return function(Title,Powered)
 	Frame_3.Size = UDim2.new(1, 0, 0.0500000007, 0)
 	Frame_3.ZIndex = 2
 	Frame_3.BackgroundTransparency = 1
-	
+
 	TweenService:Create(Frame_3,TweenInfo.new(0.35),{BackgroundTransparency = 0}):Play()
 	UIGradient_2.Rotation = 90
 	UIGradient_2.Transparency = NumberSequence.new{NumberSequenceKeypoint.new(0.00, 1.00), NumberSequenceKeypoint.new(0.41, 1.00), NumberSequenceKeypoint.new(0.415, 0.00), NumberSequenceKeypoint.new(0.55, 0.00), NumberSequenceKeypoint.new(0.56, 1.00), NumberSequenceKeypoint.new(1.00, 1.00)}
@@ -146,7 +150,7 @@ return function(Title,Powered)
 	DropShadow_2.ScaleType = Enum.ScaleType.Slice
 	DropShadow_2.SliceCenter = Rect.new(49, 49, 450, 450)
 	DropShadow_2.ImageTransparency = 1
-	
+
 	TweenService:Create(DropShadow_2,TweenInfo.new(0.5),{ImageTransparency = 0.5}):Play()
 
 	TextBox.Parent = Enter
@@ -176,13 +180,13 @@ return function(Title,Powered)
 			ImageColor3 = Color3.fromRGB(0, 0, 0)
 		}):Play()
 	end)
-	
+
 	TextBox.Focused:Connect(function()
 		TweenService:Create(DropShadow_2,TweenInfo.new(0.1),{
 			ImageColor3 = Color3.fromRGB(0, 153, 255)
 		}):Play()
 	end)
-	
+
 	Frame_4.Parent = Enter
 	Frame_4.BackgroundColor3 = Color3.fromRGB(0, 122, 204)
 	Frame_4.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -191,7 +195,7 @@ return function(Title,Powered)
 	Frame_4.ZIndex = 6
 	Frame_4.BackgroundTransparency = 1
 	TweenService:Create(Frame_4,TweenInfo.new(0.35),{BackgroundTransparency = 0}):Play()
-	
+
 	UIGradient_3.Transparency = NumberSequence.new{NumberSequenceKeypoint.new(0.00, 0.00), NumberSequenceKeypoint.new(0.18, 0.00), NumberSequenceKeypoint.new(0.19, 1.00), NumberSequenceKeypoint.new(1.00, 1.00)}
 	UIGradient_3.Parent = Frame_4
 
@@ -256,7 +260,7 @@ return function(Title,Powered)
 			ImageColor3 = Color3.fromRGB(0,0,0)
 		}):Play()
 	end)
-	
+
 	Activate.Name = "Activate"
 	Activate.Parent = Frame
 	Activate.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -285,7 +289,7 @@ return function(Title,Powered)
 	DropShadow_4.ScaleType = Enum.ScaleType.Slice
 	DropShadow_4.SliceCenter = Rect.new(49, 49, 450, 450)
 	DropShadow_4.ImageTransparency = 1
-	
+
 	TweenService:Create(DropShadow_4,TweenInfo.new(0.5),{ImageTransparency = 0.5}):Play()
 
 	Button_2.Name = "Button"
@@ -305,10 +309,10 @@ return function(Title,Powered)
 	Button_2.TextSize = 14.000
 	Button_2.TextWrapped = true
 	Button_2.TextTransparency = 1
-	
+
 	TweenService:Create(Button_2,TweenInfo.new(0.4),{TextTransparency = 0}):Play()
-	
-	
+
+
 	Button_2.MouseButton1Down:Connect(function()
 		TweenService:Create(DropShadow_4,TweenInfo.new(0.2),{
 			ImageColor3 = Color3.fromRGB(0, 153, 255)
@@ -320,7 +324,7 @@ return function(Title,Powered)
 			ImageColor3 = Color3.fromRGB(0,0,0)
 		}):Play()
 	end)
-	
+
 	CR.Name = "CR"
 	CR.Parent = Frame
 	CR.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -349,7 +353,7 @@ return function(Title,Powered)
 	Load.BorderSizePixel = 0
 	Load.Position = UDim2.new(0.5, 0, 0.435000002, 0)
 	Load.Size = UDim2.new(0.800000012, 0, 0.100000001, 0)
-	
+
 	UICorner_4.CornerRadius = UDim.new(0, 2)
 	UICorner_4.Parent = Load
 
@@ -357,9 +361,9 @@ return function(Title,Powered)
 	LoadUI.Transparency = NumberSequence.new{NumberSequenceKeypoint.new(0.00, 1.00), NumberSequenceKeypoint.new(0.40, 1.00), NumberSequenceKeypoint.new(0.41, 0.00), NumberSequenceKeypoint.new(0.60, 0.00), NumberSequenceKeypoint.new(0.61, 1.00), NumberSequenceKeypoint.new(1.00, 1.00)}
 	LoadUI.Name = "LoadUI"
 	LoadUI.Parent = Load
-	
+
 	local function HideUI(speed)
-		
+
 		for i,v in ipairs(ScreenGui:GetDescendants()) do task.wait()
 			pcall(function()
 				TweenService:Create(v,TweenInfo.new(speed),{
@@ -368,37 +372,40 @@ return function(Title,Powered)
 					TextStrokeTransparency = 1
 				}):Play()
 			end)
-			
+
 			pcall(function()
 				TweenService:Create(v,TweenInfo.new(speed),{
 					BackgroundTransparency = 1,
 					ImageTransparency = 1
 				}):Play()
 			end)
-			
+
 			pcall(function()
 				TweenService:Create(v,TweenInfo.new(speed),{
 					BackgroundTransparency = 1,
 					ImageTransparency = 1
 				}):Play()
 			end)
-			
+
 			pcall(function()
 				TweenService:Create(v,TweenInfo.new(speed),{
 					BackgroundTransparency = 1,
 				}):Play()
 			end)
 		end
+		
+		TweenService:Create(GUICorner,TweenInfo.new(1,Enum.EasingStyle.Back,Enum.EasingDirection.Out),{CornerRadius = UDim.new(0.5,0)}):Play()
 	end
-	
+
 	function KeySystem:GetKey(func)
 		Button.MouseButton1Click:Connect(func)
 	end
 
 	function KeySystem:Delete()
 		TweenService:Create(Frame,TweenInfo.new(0.255),{Size = UDim2.new(0.100000001, 230, 0.100000001, 130)}):Play()
-		HideUI(0.25)
 		
+		HideUI(0.25)
+
 		task.delay(1.5,function()
 			Destroy(ScreenGui)
 		end)
@@ -412,20 +419,20 @@ return function(Title,Powered)
 			else
 				KeySystem.Request = true
 			end
-			
-			
+
+
 			if func(TextBox.Text) then
-				
+
 				KeySystem.Request = false
-				
+
 				task.cancel(KeySystem.Task)
-				
+
 				KeySystem:Delete()
 				return true
 			end
-			
+
 			TextBox.Text = ''
-			
+
 			KeySystem.Request = false
 		end)
 	end
@@ -433,13 +440,13 @@ return function(Title,Powered)
 	KeySystem.Task = task.spawn(function()
 		local LoopedTask = tick()
 		local loadtime = 1
-		
+
 		while true do task.wait()
 			if KeySystem.Request then
 				if tick() > LoopedTask then
 					LoopedTask = tick() + loadtime
 					LoadUI.Offset = Vector2.new(-0.699999988, 0)
-					
+
 					TweenService:Create(LoadUI,TweenInfo.new(loadtime,Enum.EasingStyle.Linear),{
 						Offset = Vector2.new(0.6, 0)
 					}):Play()
