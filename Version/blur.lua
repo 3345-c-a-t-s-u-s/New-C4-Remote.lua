@@ -11,6 +11,7 @@ BLUR_OBJ.FarIntensity   = 0;
 BLUR_OBJ.NearIntensity  = START_INTENSITY;
 BLUR_OBJ.FocusDistance  = 0.25;
 BLUR_OBJ.InFocusRadius  = 0;
+BLUR_OBJ.Enabled = false;
 BLUR_OBJ.Parent         = nil;
 
 local PartsList         = {};
@@ -87,8 +88,9 @@ function BlurredGui.new(frame, shape)
 	}, BlurredGui);
 
 	BlurObjects[new] = blurPart;
-	rebuildPartsList();
+	--rebuildPartsList();
 
+	--[[
 	game:GetService("RunService"):BindToRenderStep("...", Enum.RenderPriority.Camera.Value + 1, function()
 		pcall(function()
 			BLUR_SIZE = frame.AbsoluteSize
@@ -103,11 +105,13 @@ function BlurredGui.new(frame, shape)
 		blurPart.CFrame = camera.CFrame * CFrame.new(0,0,0);
 		BlurredGui.updateAll();
 	end);
+	]]
 
 	return new;
 end
 
 function updateGui(blurObj)
+	--[[
 	if (not blurObj.Frame.Visible) then
 		blurObj.Part.Transparency = 1;
 		return;
@@ -145,9 +149,11 @@ function updateGui(blurObj)
 
 	mesh.Offset = center --+ Vector3.new(0,-0.01525,0);
 	mesh.Scale  = size / PART_SIZE;
+	]]
 end
 
 function BlurredGui.updateAll()
+	--[[
 	BLUR_OBJ.NearIntensity = 12;
 
 	for i = 1, #BlursList do
@@ -158,6 +164,7 @@ function BlurredGui.updateAll()
 	workspace:BulkMoveTo(PartsList, cframes, Enum.BulkMoveMode.FireCFrameChanged);
 
 	BLUR_OBJ.FocusDistance = 0.25 - camera.NearPlaneZ;
+	]]
 end
 
 function BlurredGui:Destroy()
