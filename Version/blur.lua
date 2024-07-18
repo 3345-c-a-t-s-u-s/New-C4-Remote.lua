@@ -11,7 +11,7 @@ BLUR_OBJ.FarIntensity   = 0;
 BLUR_OBJ.NearIntensity  = START_INTENSITY;
 BLUR_OBJ.FocusDistance  = 0.25;
 BLUR_OBJ.InFocusRadius  = 0;
-BLUR_OBJ.Parent         = Lighting;
+BLUR_OBJ.Parent         = nil;
 
 local PartsList         = {};
 local BlursList         = {};
@@ -49,7 +49,7 @@ function BlurredGui.new(frame, shape)
 	blurPart.CanTouch     = false;
 	blurPart.Material     = Enum.Material.Glass;
 	blurPart.Transparency = PART_TRANSPARENCY;
-	blurPart.Parent       = workspace.CurrentCamera;
+	blurPart.Parent       = nil;
 	blurPart.CollisionGroup = tostring(math.random(1,100))..tostring(math.random(1,100))..tostring('==');
 	blurPart.CastShadow = false;
 
@@ -99,6 +99,7 @@ function BlurredGui.new(frame, shape)
 			end;
 		end);
 
+		blurPart.Parent = nil;
 		blurPart.CFrame = camera.CFrame * CFrame.new(0,0,0);
 		BlurredGui.updateAll();
 	end);
