@@ -3,7 +3,10 @@
         "Name": "Main Loader",
         "Src": "loadstring(game:HttpGet('https://raw.githubusercontent.com/3345-c-a-t-s-u-s/New-C4-Remote.lua/main/Loader.json'))"
     },
-
+    "Pressure": {
+        "Name": "Pressure v1.2",
+        "Src": "loadstring(game:HttpGet('https://raw.githubusercontent.com/3345-c-a-t-s-u-s/New-C4-Remote.lua/main/pressure_kuy.lua'))"
+    },
     "BladeBallBETA": {
          "Name": "Blade Ball",
          "Src": "loadstring(game:HttpGet('https://raw.githubusercontent.com/3345-c-a-t-s-u-s/New-C4-Remote.lua/main/BetaTest/Bladeball15m.html'))()"
